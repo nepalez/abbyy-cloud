@@ -1,0 +1,77 @@
+require: rubocop-rspec
+
+AllCops:
+  Include:
+    - ./Gemfile
+    - ./config.ru
+  Exclude:
+    - db/**/*
+    - config/**/*
+    - script/**/*
+    - bin/*
+    - vendor/**/*
+  TargetRubyVersion: 2.3
+
+Documentation:
+  Enabled: false
+
+Lint/HandleExceptions:
+  Exclude:
+    - spec/**/*_spec.rb
+
+Lint/RescueException:
+  Exclude:
+    - spec/**/*_spec.rb
+
+Metrics/LineLength:
+  Max: 80
+  Exclude:
+    - spec/**/*_spec.rb
+
+Style/AccessorMethodName:
+  Exclude:
+    - spec/**/*_spec.rb
+
+Style/Alias:
+  Enabled: false # `alias_method` and `alias` have diferent behaviour
+
+Style/FileName:
+  Enabled: false
+
+Style/Lambda:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false # not to be used before migration to Ruby 3+
+
+Style/RaiseArgs:
+  Enabled: false
+
+Style/Semicolon:
+  Exclude:
+    - spec/**/*_spec.rb
+
+Style/SingleLineMethods:
+  Exclude:
+    - spec/**/*_spec.rb
+
+Style/SpecialGlobalVars:
+  Exclude:
+    - Gemfile
+    - abbyy-cloud.gemspec
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes
+
+Style/TrivialAccessors:
+  Exclude:
+    - spec/**/*_spec.rb
