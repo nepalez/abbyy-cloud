@@ -7,7 +7,9 @@ require "net/https"
 
 module ABBYY
   class Cloud
+    require_relative "cloud/struct"
     require_relative "cloud/types"
+    require_relative "cloud/response_error"
 
     include Dry::Initializer.define -> do
       option :id,      type: Types::AuthId
