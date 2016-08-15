@@ -1,8 +1,19 @@
 require "dry-initializer"
+require "dry-struct"
 require "dry-types"
-require "dry-validation"
+require "json"
+require "net/http"
+require "net/https"
 
 module ABBYY
-  module Cloud
+  class Cloud
+    require_relative "cloud/types"
+
+    include Dry::Initializer.define -> do
+      option :id,      type: Types::AuthId
+      option :token,   type: Types::AuthToken
+      option :version, type: Types::Version, default: proc { 0 }
+      option :engine,  type: Types::Engine,  default: proc { "Sandbox" }
+    end
   end
 end
