@@ -34,7 +34,7 @@ class ABBYY::Cloud
         req["accept-charset"] = "utf-8"
         req["accept"] = "application/json"
         req["content-type"] = "application/json"
-        headers.each { |key, value| req[key] = value }
+        headers.each { |key, value| req[key.to_s] = value }
       end
     end
 
