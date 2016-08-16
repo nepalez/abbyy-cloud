@@ -8,6 +8,7 @@ RSpec.describe ABBYY::Cloud, "#translate" do
   let(:source_text)     { "Бить или не бить" }
   let(:path)            { "https://api.abbyy.cloud/order/mt/sync" }
   let(:response_status) { 200 }
+  let(:response_model)  { { id: "42", translation: "To beat or not to beat" } }
   let(:params) do
     { from: source_language, to: target_language, engine: custom_engine }
   end
@@ -17,59 +18,14 @@ RSpec.describe ABBYY::Cloud, "#translate" do
       .with(basic_auth: %w(foo bar))
       .to_return status:  response_status,
                  headers: { "Content-Type" => "application/json" },
-                 body:    JSON(id: "42", translation: "To beat or not to beat")
+                 body:    JSON(response_model)
   end
 
   subject { client.translate source_text, params }
 
   it "sends a request to ABBYY Cloud API and returns translation as a hash" do
-    expect(subject).to eq id: "42", translation: "To beat or not to beat"
+    expect(subject).to eq response_model
     expect(a_request(:post, path)).to have_been_made
-  end
-
-  context "without text to translate:" do
-    let(:source_text) { nil }
-
-    it "raises TypeError before sending a request" do
-      expect { subject }.to raise_error(TypeError)
-      expect(a_request(:any, //)).not_to have_been_made
-    end
-  end
-
-  context "with invalid source language:" do
-    let(:source_language) { "ru_12" }
-
-    it "raises TypeError before sending a request" do
-      expect { subject }.to raise_error(TypeError)
-      expect(a_request(:any, //)).not_to have_been_made
-    end
-  end
-
-  context "without source language:" do
-    before { params.delete :from }
-
-    it "raises TypeError before sending a request" do
-      expect { subject }.to raise_error(ArgumentError)
-      expect(a_request(:any, //)).not_to have_been_made
-    end
-  end
-
-  context "with invalid target language:" do
-    let(:target_language) { "neoru" }
-
-    it "raises TypeError before sending a request" do
-      expect { subject }.to raise_error(TypeError)
-      expect(a_request(:any, //)).not_to have_been_made
-    end
-  end
-
-  context "without target language:" do
-    before { params.delete :to }
-
-    it "raises TypeError before sending a request" do
-      expect { subject }.to raise_error(ArgumentError)
-      expect(a_request(:any, //)).not_to have_been_made
-    end
   end
 
   context "without custom engine:" do
@@ -100,6 +56,75 @@ RSpec.describe ABBYY::Cloud, "#translate" do
     it "uses Sandbox engine in the request" do
       subject
       expect(expected_request).to have_been_made
+    end
+  end
+
+  context "without text to translate:" do
+    let(:source_text) { nil }
+
+    it "raises ArgumentError before sending a request" do
+      expect { subject }.to raise_error(ABBYY::Cloud::ArgumentError)
+      expect(a_request(:any, //)).not_to have_been_made
+    end
+  end
+
+  context "with invalid source language:" do
+    let(:source_language) { "ru_12" }
+
+    it "raises ArgumentError before sending a request" do
+      expect { subject }.to raise_error(ABBYY::Cloud::ArgumentError)
+      expect(a_request(:any, //)).not_to have_been_made
+    end
+  end
+
+  context "without source language:" do
+    before { params.delete :from }
+
+    it "raises ArgumentError before sending a request" do
+      expect { subject }.to raise_error(::ArgumentError)
+      expect(a_request(:any, //)).not_to have_been_made
+    end
+  end
+
+  context "with invalid target language:" do
+    let(:target_language) { "neoru" }
+
+    it "raises ArgumentError before sending a request" do
+      expect { subject }.to raise_error(ABBYY::Cloud::ArgumentError)
+      expect(a_request(:any, //)).not_to have_been_made
+    end
+  end
+
+  context "without target language:" do
+    before { params.delete :to }
+
+    it "raises ArgumentError before sending a request" do
+      expect { subject }.to raise_error(::ArgumentError)
+      expect(a_request(:any, //)).not_to have_been_made
+    end
+  end
+
+  context "when API responded with error:" do
+    let(:response_status) { 400 }
+
+    it "raises ResponseError" do
+      expect { subject }.to raise_error(ABBYY::Cloud::ResponseError)
+    end
+  end
+
+  context "when API returned data without an id:" do
+    let(:response_model) { { translation: "To beat or not to beat" } }
+
+    it "raises TypeError" do
+      expect { subject }.to raise_error(ABBYY::Cloud::TypeError)
+    end
+  end
+
+  context "when API returned data without a translation:" do
+    let(:response_model) { { id: 1 } }
+
+    it "raises TypeError" do
+      expect { subject }.to raise_error(ABBYY::Cloud::TypeError)
     end
   end
 end

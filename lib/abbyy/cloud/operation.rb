@@ -18,6 +18,10 @@ class ABBYY::Cloud
         value ? @path = value : @path
       end
 
+      def link(value = nil)
+        value ? @link = value : @link
+      end
+
       def request_body(struct = nil, &block)
         provide_struct :@request_body, struct, &block
       end
@@ -39,19 +43,34 @@ class ABBYY::Cloud
     end
 
     def_delegators :"self.class",
+                   :link,
                    :http_method,
                    :path,
                    :request_body,
                    :response_body
 
     include Dry::Initializer.define -> do
-      param  :connection
+      param :connection
     end
 
     def call(**data)
-      body = request_body[data].to_h
-      res  = connection.call http_method, path, body: body
-      response_body[res].to_h
+      body = prepare_request_body(data)
+      res  = connection.call(http_method, path, body: body)
+      handle_response_body(res)
+    end
+
+    private
+
+    def prepare_request_body(data)
+      request_body[data]
+    rescue => error
+      raise ArgumentError.new(link, data, error.message)
+    end
+
+    def handle_response_body(data)
+      response_body[data].to_h
+    rescue => error
+      raise TypeError.new(link, data, error.message)
     end
   end
 end

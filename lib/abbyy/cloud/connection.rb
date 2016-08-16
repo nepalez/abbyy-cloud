@@ -12,9 +12,9 @@ class ABBYY::Cloud
       option :token
     end
 
-    def call(http_method, path, body: {}, headers: {})
+    def call(http_method, path, body: nil, headers: nil)
       uri = root.merge(path).tap { |item| item.scheme = "https" }
-      req = prepare_request(http_method, uri, body, headers)
+      req = prepare_request(http_method, uri, body.to_h, headers.to_h)
 
       Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
         handle_response http.request(req)

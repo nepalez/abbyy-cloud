@@ -10,6 +10,8 @@ module ABBYY
     require_relative "cloud/struct"
     require_relative "cloud/types"
     require_relative "cloud/response_error"
+    require_relative "cloud/argument_error"
+    require_relative "cloud/type_error"
     require_relative "cloud/connection"
     require_relative "cloud/operation"
     require_relative "cloud/operation/translate"

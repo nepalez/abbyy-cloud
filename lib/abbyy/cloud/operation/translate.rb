@@ -1,8 +1,7 @@
 class ABBYY::Cloud
   class Operation
-    # @see [https://api.abbyy.cloud/swagger/ui/index#!/Order/Order_Translate]
-    #   Swagger specification for the operation
     class Translate < Operation
+      link "https://api.abbyy.cloud/swagger/ui/index#!/Order/Order_Translate"
       path "order/mt/sync"
       http_method "post"
 
