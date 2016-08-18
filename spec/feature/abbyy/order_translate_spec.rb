@@ -23,9 +23,14 @@ RSpec.describe "orders.translate" do
 
   subject { client.orders.translate source_text, params }
 
-  it "sends a request to ABBYY Cloud API and returns translation as a hash" do
-    expect(subject).to eq response_model
+  it "sends a request to ABBYY Cloud API" do
+    subject
     expect(a_request(:post, path)).to have_been_made
+  end
+
+  it "returns translation model" do
+    expect(subject).to be_instance_of ABBYY::Cloud::Models::Translation
+    expect(subject.to_h).to eq response_model
   end
 
   context "without custom engine:" do

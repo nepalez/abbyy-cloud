@@ -12,10 +12,7 @@ class ABBYY::Cloud
         attribute :source_text,     Types::Strict::String
       end
 
-      response_body do
-        attribute :id,          Types::OrderId
-        attribute :translation, Types::Strict::String
-      end
+      response_body Models::Translation
     end
   end
 end

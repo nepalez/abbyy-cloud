@@ -40,8 +40,9 @@ See [the specification](https://api.abbyy.cloud/swagger/ui/index#!/Order/Order_T
 ```ruby
 result = CLIENT.orders.translate("To be or not to be", from: :en, to: :ru)
 
-result[:translation] # => "Быть или не быть"
-result[:order_id]    # => 2832934
+result.translation # => "Быть или не быть"
+result.id          # => "2832934"
+result.to_h        # => { id: "2832934", translation: "Быть или не быть" }
 ```
 
 You can specify an engine (different from default):

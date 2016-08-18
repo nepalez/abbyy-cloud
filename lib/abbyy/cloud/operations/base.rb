@@ -69,7 +69,7 @@ class ABBYY::Cloud
       end
 
       def handle_response_body(data)
-        response_body[data].to_h
+        response_body[data]
       rescue => error
         raise TypeError.new(link, data, error.message)
       end
