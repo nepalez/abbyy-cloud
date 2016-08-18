@@ -6,7 +6,7 @@ class ABBYY::Cloud
       http_method "post"
 
       request_body do
-        attribute :engine,          Types::Engine
+        attribute :engine,          Types::Strict::String
         attribute :source_language, Types::Language
         attribute :target_language, Types::Language
         attribute :source_text,     Types::Strict::String

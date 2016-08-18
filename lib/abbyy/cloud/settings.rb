@@ -6,7 +6,7 @@ class ABBYY::Cloud
       option :id,      type: Types::AuthId
       option :token,   type: Types::AuthToken
       option :version, type: Types::Version, default: proc { 0 }
-      option :engine,  type: Types::Engine,  default: proc { "Sandbox" }
+      option :engine,  type: Types::Strict::String, default: proc { "Sandbox" }
     end
 
     def connection

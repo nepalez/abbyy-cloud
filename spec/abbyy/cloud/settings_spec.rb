@@ -5,14 +5,6 @@ RSpec.describe ABBYY::Cloud::Settings do
   describe ".new" do
     subject { settings }
 
-    context "with wrong engine" do
-      before { options[:engine] = "Wrong" }
-
-      it "fails" do
-        expect { subject }.to raise_error(StandardError)
-      end
-    end
-
     context "without id" do
       before { options.delete :id }
 

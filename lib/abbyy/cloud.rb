@@ -18,6 +18,7 @@ module ABBYY
     require_relative "cloud/models/error"
     require_relative "cloud/models/translation"
     require_relative "cloud/models/direction"
+    require_relative "cloud/models/engine"
 
     require_relative "cloud/operations/base"
     require_relative "cloud/operations/translate"

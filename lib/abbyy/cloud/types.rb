@@ -8,7 +8,6 @@ module ABBYY::Cloud::Types
   # Gem-specific primitive types
   AuthId    = Strict::String
   AuthToken = Strict::String
-  Engine    = Coercible::String.constrained(included_in: ENGINES)
   Language  = Strict::String.constrained(format: LANGUAGE)
   OrderId   = Strict::String
   Version   = Coercible::Int.constrained(included_in: VERSIONS)
