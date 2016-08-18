@@ -31,22 +31,23 @@ CLIENT = ABBYY::Cloud.new id:      "foo",
                           version: 0          # the only supported version
 ```
 
-### Instant Translation
+### Orders
+
+#### Instant Translation
 
 See [the specification](https://api.abbyy.cloud/swagger/ui/index#!/Order/Order_Translate).
 
 ```ruby
-result = CLIENT.translate("To be or not to be", from: :en, to: :ru)
+result = CLIENT.orders.translate("To be or not to be", from: :en, to: :ru)
 
-result.class       # => ABBYY::Cloud::Translation
-result.translation # => "Быть или не быть"
-result.order_id    # => 2832934
+result[:translation] # => "Быть или не быть"
+result[:order_id]    # => 2832934
 ```
 
 You can specify an engine (different from default):
 
 ```ruby
-CLIENT.translate("To be or not to be", from: :en, to: :ru, engine: "Bing")
+CLIENT.orders.translate("To be or not to be", from: :en, to: :ru, engine: "Bing")
 ```
 
 The method raises an exception in case the cloud responded with error.
@@ -54,7 +55,7 @@ The method raises an exception in case the cloud responded with error.
 ```ruby
 error = \
   begin
-    CLIENT.translate("To be or not to be")
+    CLIENT.orders.translate("To be or not to be")
   rescue ABBYY::Cloud::Error => error
     error
   end
