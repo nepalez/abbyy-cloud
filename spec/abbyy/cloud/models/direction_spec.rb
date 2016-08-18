@@ -7,7 +7,7 @@ RSpec.describe ABBYY::Cloud::Models::Direction do
   its(:to_h) { is_expected.to eq data }
 
   context "with invalid source:" do
-    before { data[:source] = "eng" }
+    before { data[:source] = "2" }
 
     it "fails" do
       expect { subject }.to raise_error(StandardError)

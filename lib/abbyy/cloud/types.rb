@@ -1,9 +1,8 @@
 module ABBYY::Cloud::Types
   include Dry::Types.module
 
-  ENGINES  = %w(Bing Google Compreno Systran Mock Sandbox).freeze
   VERSIONS = [0].freeze
-  LANGUAGE = /\A[a-z]{2}(-[A-Za-z]+)*\z/
+  LANGUAGE = /\A[A-Za-z]{2,}(-[A-Za-z]+)*\z/
 
   # Gem-specific primitive types
   AuthId    = Strict::String

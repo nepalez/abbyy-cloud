@@ -74,7 +74,7 @@ RSpec.describe "orders.translate" do
   end
 
   context "with invalid source language:" do
-    let(:source_language) { "wrong" }
+    let(:source_language) { "1" }
 
     it "raises ArgumentError before sending a request" do
       expect { subject }.to raise_error(ABBYY::Cloud::ArgumentError)
@@ -92,7 +92,7 @@ RSpec.describe "orders.translate" do
   end
 
   context "with invalid target language:" do
-    let(:target_language) { "wrong" }
+    let(:target_language) { "1" }
 
     it "raises ArgumentError before sending a request" do
       expect { subject }.to raise_error(ABBYY::Cloud::ArgumentError)
