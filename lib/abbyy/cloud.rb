@@ -1,6 +1,5 @@
 require "dry-initializer"
 require "dry-struct"
-require "dry-types"
 require "json"
 require "net/http"
 require "net/https"
