@@ -3,9 +3,9 @@ class ABBYY::Cloud
   module Models
     # An error returned by the server in case of wrong response
     class Error < Struct
-      attribute :request_id,        Types::Coercible::String.optional
-      attribute :error,             Types::Coercible::String.optional
-      attribute :error_description, Types::Coercible::String.optional
+      attribute :request_id,        Types::Strict::String.optional
+      attribute :error,             Types::Strict::String.optional
+      attribute :error_description, Types::Strict::String.optional
       attribute :model_state,       Types::Hash.optional
     end
   end
