@@ -9,9 +9,11 @@ module ABBYY
   class Cloud
     require_relative "cloud/struct"
     require_relative "cloud/types"
-    require_relative "cloud/response_error"
-    require_relative "cloud/argument_error"
-    require_relative "cloud/type_error"
+
+    require_relative "cloud/exceptions/response_error"
+    require_relative "cloud/exceptions/argument_error"
+    require_relative "cloud/exceptions/type_error"
+
     require_relative "cloud/connection"
     require_relative "cloud/settings"
     require_relative "cloud/operation"
