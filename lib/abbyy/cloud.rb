@@ -8,25 +8,23 @@ module ABBYY
   class Cloud
     require_relative "cloud/struct"
     require_relative "cloud/types"
+    require_relative "cloud/connection"
+    require_relative "cloud/settings"
 
     require_relative "cloud/exceptions/response_error"
     require_relative "cloud/exceptions/argument_error"
     require_relative "cloud/exceptions/type_error"
 
-    require_relative "cloud/connection"
-    require_relative "cloud/settings"
-
     require_relative "cloud/operations/base"
     require_relative "cloud/operations/translate"
 
+    require_relative "cloud/namespaces/base"
+    require_relative "cloud/namespaces/orders"
+
     attr_reader :settings
 
-    def translate(text, from:, to:, **opts)
-      Operations::Translate.new(settings).call source_text:     text,
-                                               source_language: from,
-                                               target_language: to,
-                                               engine: settings.engine,
-                                               **opts
+    def orders
+      Namespaces::Orders.new(settings)
     end
 
     private

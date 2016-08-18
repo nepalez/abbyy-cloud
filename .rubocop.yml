@@ -13,8 +13,10 @@ AllCops:
   TargetRubyVersion: 2.3
 
 RSpec/NamedSubject:
-  Exclude:
-    - spec/**/*_spec.rb
+  Enabled: false
+
+RSpec/DescribeClass:
+  Enabled: false
 
 Documentation:
   Enabled: false

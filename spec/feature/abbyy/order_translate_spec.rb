@@ -1,5 +1,5 @@
-RSpec.describe ABBYY::Cloud, "#translate" do
-  let(:client)          { described_class.new settings }
+RSpec.describe "orders.translate" do
+  let(:client)          { ABBYY::Cloud.new settings }
   let(:settings)        { { id: "foo", token: "bar", engine: default_engine } }
   let(:default_engine)  { "Google" }
   let(:custom_engine)   { "Bing" }
@@ -21,7 +21,7 @@ RSpec.describe ABBYY::Cloud, "#translate" do
                  body:    JSON(response_model)
   end
 
-  subject { client.translate source_text, params }
+  subject { client.orders.translate source_text, params }
 
   it "sends a request to ABBYY Cloud API and returns translation as a hash" do
     expect(subject).to eq response_model
