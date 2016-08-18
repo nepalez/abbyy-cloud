@@ -1,6 +1,6 @@
 Gem::Specification.new do |gem|
   gem.name     = "abbyy-cloud"
-  gem.version  = "0.0.1"
+  gem.version  = "0.0.2"
   gem.authors  = ["Andrew Kozin"]
   gem.email    = ["andrew.kozin@gmail.com"]
   gem.summary  = "HTTP client to ABBYY Cloud API"
