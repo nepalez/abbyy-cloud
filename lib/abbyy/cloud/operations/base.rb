@@ -6,7 +6,7 @@
 class ABBYY::Cloud
   module Operations
     class Base
-      # Contains helper methods to specify concrete operations
+      # Helpers to specify concrete operations
       class << self
         include Forwardable
 
@@ -34,12 +34,13 @@ class ABBYY::Cloud
         private
 
         def provide_struct(variable, struct, &block)
-          if block || instance_variable_get(variable).nil?
-            struct ||= Class.new(Struct).tap { |obj| obj.instance_eval(&block) }
-            instance_variable_set(variable, struct)
-          else
-            instance_variable_get(variable)
-          end
+          value = instance_variable_get(variable)
+          return value if value && struct.nil? && block.nil?
+
+          struct ||= Class.new(Struct)
+                          .tap { |obj| obj.instance_eval(&block) if block }
+
+          instance_variable_set(variable, struct)
         end
       end
 

@@ -14,7 +14,7 @@ class ABBYY::Cloud
 
     def call(http_method, path, body: nil, headers: nil)
       uri = root.merge(path).tap { |item| item.scheme = "https" }
-      req = prepare_request(http_method, uri, body.to_h, headers.to_h)
+      req = prepare_request(http_method, uri, JSON(body.to_h), headers.to_h)
 
       Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
         handle_response http.request(req)
@@ -24,7 +24,7 @@ class ABBYY::Cloud
     private
 
     def root
-      @root ||= URI("https://api.abbyy.cloud").merge("v#{version}")
+      @root ||= URI("https://api.abbyy.cloud").merge("v#{version}/")
     end
 
     def prepare_request(http_method, uri, body, headers)

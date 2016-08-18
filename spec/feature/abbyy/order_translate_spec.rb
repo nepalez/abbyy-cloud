@@ -4,9 +4,9 @@ RSpec.describe "orders.translate" do
   let(:default_engine)  { "Google" }
   let(:custom_engine)   { "Bing" }
   let(:source_language) { "ru" }
-  let(:target_language) { "en_EN" }
+  let(:target_language) { "en" }
   let(:source_text)     { "Бить или не бить" }
-  let(:path)            { "https://api.abbyy.cloud/order/mt/sync" }
+  let(:path)            { "https://api.abbyy.cloud/v0/order/mt/sync" }
   let(:response_status) { 200 }
   let(:response_model)  { { id: "42", translation: "To beat or not to beat" } }
   let(:params) do
@@ -38,7 +38,7 @@ RSpec.describe "orders.translate" do
 
     let(:expected_request) do
       a_request(:post, path).with do |req|
-        expect(req.body).to include engine: "Google"
+        expect(JSON.parse(req.body)).to include "engine" => "Google"
       end
     end
 
@@ -54,7 +54,7 @@ RSpec.describe "orders.translate" do
 
     let(:expected_request) do
       a_request(:post, path).with do |req|
-        expect(req.body).to include engine: "Sandbox"
+        expect(JSON.parse(req.body)).to include "engine" => "Sandbox"
       end
     end
 
@@ -74,7 +74,7 @@ RSpec.describe "orders.translate" do
   end
 
   context "with invalid source language:" do
-    let(:source_language) { "ru_12" }
+    let(:source_language) { "wrong" }
 
     it "raises ArgumentError before sending a request" do
       expect { subject }.to raise_error(ABBYY::Cloud::ArgumentError)
@@ -92,7 +92,7 @@ RSpec.describe "orders.translate" do
   end
 
   context "with invalid target language:" do
-    let(:target_language) { "neoru" }
+    let(:target_language) { "wrong" }
 
     it "raises ArgumentError before sending a request" do
       expect { subject }.to raise_error(ABBYY::Cloud::ArgumentError)
