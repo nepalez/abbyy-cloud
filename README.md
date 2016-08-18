@@ -40,6 +40,7 @@ See [the specification](https://api.abbyy.cloud/swagger/ui/index#!/Order/Order_T
 ```ruby
 result = CLIENT.orders.translate("To be or not to be", from: :en, to: :ru)
 
+result.class       # => ABBYY::Cloud::Models::Translation
 result.translation # => "Быть или не быть"
 result.id          # => "2832934"
 result.to_h        # => { id: "2832934", translation: "Быть или не быть" }
@@ -63,6 +64,12 @@ error = \
 
 error.class  # => ABBYY::Cloud::ResponceError
 error.status # => 400
+```
+
+The exception carries returned error model in its `#data` attribute:
+
+```ruby
+error.data   # => ABBYY::Cloud::Models::Error
 error.data.to_h
 # => {
 #   model_state: {},
