@@ -22,11 +22,17 @@ module ABBYY
 
     require_relative "cloud/operations/base"
     require_relative "cloud/operations/translate"
+    require_relative "cloud/operations/engines"
 
     require_relative "cloud/namespaces/base"
     require_relative "cloud/namespaces/orders"
+    require_relative "cloud/namespaces/machine_translations"
 
     attr_reader :settings
+
+    def mt
+      Namespaces::MachineTranslations.new(settings)
+    end
 
     def orders
       Namespaces::Orders.new(settings)
