@@ -50,12 +50,12 @@ class ABBYY::Cloud
                    :response_body
 
     include Dry::Initializer.define -> do
-      param :connection
+      param :settings
     end
 
     def call(**data)
       body = prepare_request_body(data)
-      res  = connection.call(http_method, path, body: body)
+      res  = settings.connection.call(http_method, path, body: body)
       handle_response_body(res)
     end
 
