@@ -15,6 +15,7 @@
 * Add models for objects returned by operations (nepalez)
 
 [See v0.0.2](https://github.com/nepalez/abbyy-cloud/tree/v0.0.2)
+
 [Compare v0.0.1...v0.0.2](https://github.com/nepalez/abbyy-cloud/compare/v0.0.1...v0.0.2)
 
 # v0.0.1 2016-08-16
