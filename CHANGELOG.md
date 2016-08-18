@@ -1,3 +1,26 @@
+# [v0.0.3 2016-08-18](https://github.com/nepalez/abbyy-cloud/tree/v0.0.3)
+
+### Bugs Fixed
+
+* Fix version in root path to ABBYY Cloud API (nepalez)
+* Fix validation of language names (nepalez)
+* Allow ResponseError to take response with non-json body (nepalez)
+
+### Added
+
+* Operation `.mt.engines` (nepalez)
+
+### Changed
+
+* Remove validation of engine names (nepalez)
+
+### Internal
+
+* Add coverage to all models (nepalez)
+* Add method `Types.register_type` for custom types (nepalez)
+
+[Compare v0.0.2...v0.0.3](https://github.com/nepalez/abbyy-cloud/compare/v0.0.2...v0.0.3)
+
 # [v0.0.2 2016-08-18](https://github.com/nepalez/abbyy-cloud/tree/v0.0.2)
 
 ### Changed

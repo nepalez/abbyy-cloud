@@ -17,6 +17,8 @@ The library is available as a gem `abbyy-cloud`.
 Initialize the client with a corresponding credentials:
 
 ```ruby
+require "abbyy/cloud"
+
 CLIENT = ABBYY::Cloud.new(id: "foo", token: "bar")
 ```
 
