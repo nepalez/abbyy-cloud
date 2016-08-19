@@ -33,6 +33,32 @@ CLIENT = ABBYY::Cloud.new id:      "foo",
                           version: 0          # the only supported version
 ```
 
+### Machine Translations
+
+#### Engines
+
+See [the specification](https://api.abbyy.cloud/swagger/ui/index#!/MachineTranslation)
+
+```ruby
+result = CLIENT.mt.engines
+# => [#<ABBYY::Cloud::Models::Engine @name="Sandbox">]
+```
+
+#### Engine
+
+This operation is built on top of the previous one and simply takes settings for the specified engine:
+
+```ruby
+result = CLIENT.mt.engine("Sandbox")
+
+result.class                  # => ABBYY::Cloud::Models::Engine
+result.name                   # => "Sandbox"
+result.languages              # => ["en", "ru"]
+result.translation_directions # => [#<ABBYY::Cloud::Models::Direction source: "en", target: "ru">]
+result.to_h
+# => { name: "Sandbox", languages: ["en", "ru"], translation_directions: [{ source: "en", target: "ru" }] }
+```
+
 ### Orders
 
 #### Instant Translation
