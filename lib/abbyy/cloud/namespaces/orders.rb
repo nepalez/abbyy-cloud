@@ -9,8 +9,8 @@ class ABBYY::Cloud
       #   translate "Hello world!", from: "en", to: "fr_FR"
       #
       # @param  [String] text
-      # @option [ABBYY::Cloud::Types::Language] :from Source language
-      # @option [ABBYY::Cloud::Types::Language] :to   Target language
+      # @option [ABBYY::Cloud::Types::Locale] :from Source language
+      # @option [ABBYY::Cloud::Types::Locale] :to   Target language
       # @return [Hash<Symbol, Object>] translation
       #
       def translate(text, from:, to:, **opts)

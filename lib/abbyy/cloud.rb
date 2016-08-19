@@ -16,6 +16,7 @@ module ABBYY
     require_relative "cloud/exceptions/type_error"
 
     require_relative "cloud/models/error"
+    require_relative "cloud/models/locale"
     require_relative "cloud/models/translation"
     require_relative "cloud/models/direction"
     require_relative "cloud/models/engine"

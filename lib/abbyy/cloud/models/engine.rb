@@ -4,7 +4,7 @@ class ABBYY::Cloud
     # Description of the engine
     class Engine < Struct
       attribute :name,                   Types::Strict::String
-      attribute :languages,              Types::Array.member(Types::Language)
+      attribute :languages,              Types::Array.member(Types::Locale)
       attribute :translation_directions, Types::Array.member(Types::Direction)
     end
 

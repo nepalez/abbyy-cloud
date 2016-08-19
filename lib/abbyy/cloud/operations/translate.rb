@@ -7,8 +7,8 @@ class ABBYY::Cloud
 
       request_body do
         attribute :engine,          Types::Strict::String
-        attribute :source_language, Types::Language
-        attribute :target_language, Types::Language
+        attribute :source_language, Types::Locale
+        attribute :target_language, Types::Locale
         attribute :source_text,     Types::Strict::String
       end
 

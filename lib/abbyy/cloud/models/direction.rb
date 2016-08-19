@@ -2,8 +2,8 @@ class ABBYY::Cloud
   module Models
     # Description of the translation direction
     class Direction < Struct
-      attribute :source, Types::Language
-      attribute :target, Types::Language
+      attribute :source, Types::Locale
+      attribute :target, Types::Locale
     end
 
     # Registers type Types::Direction
