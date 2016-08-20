@@ -5,20 +5,13 @@ class ABBYY::Cloud
     class Orders < Base
       # Instantly (synchronously) translates the text
       #
-      # @example
-      #   translate "Hello world!", from: "en", to: "fr_FR"
+      # @example (see ABBYY::Cloud::Namespaces::MachineTranslations#translate)
+      # @param   (see ABBYY::Cloud::Namespaces::MachineTranslations#translate)
+      # @option  (see ABBYY::Cloud::Namespaces::MachineTranslations#translate)
+      # @return  (see ABBYY::Cloud::Namespaces::MachineTranslations#translate)
       #
-      # @param  [String] text
-      # @option [ABBYY::Cloud::Types::Locale] :from Source language
-      # @option [ABBYY::Cloud::Types::Locale] :to   Target language
-      # @return [Hash<Symbol, Object>] translation
-      #
-      def translate(text, from:, to:, **opts)
-        Operations::Translate.new(settings).call source_text:     text,
-                                                 source_language: from,
-                                                 target_language: to,
-                                                 engine: settings.engine,
-                                                 **opts
+      def translate(*args)
+        Namespaces::MachineTranslations.new(settings).translate(*args)
       end
     end
   end

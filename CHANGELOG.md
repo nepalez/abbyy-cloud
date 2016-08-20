@@ -2,9 +2,15 @@
 
 ### Added
 
+* Operation `mt.engine(name)` (nepalez)
+* Operation `mt.default_engine` (nepalez)
 * Validation of locales following IANA & RFC-5646 (nepalez)
 
-[Compare v0.0.3...HEAD](https://github.com/nepalez/abbyy-cloud/compare/v0.0.2...HEAD)
+### Internal
+
+* Added support for query part of a request (nepalez)
+
+[Compare v0.0.3...HEAD](https://github.com/nepalez/abbyy-cloud/compare/v0.0.3...HEAD)
 
 # [v0.0.3 2016-08-18](https://github.com/nepalez/abbyy-cloud/tree/v0.0.3)
 

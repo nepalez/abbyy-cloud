@@ -33,9 +33,20 @@ CLIENT = ABBYY::Cloud.new id:      "foo",
                           version: 0          # the only supported version
 ```
 
+And then use the client to provide requests:
+
+```ruby
+CLIENT.orders.translate("To be or not to be", from: :en, to: :ru).translation
+translation # => "Быть или не быть"
+```
+
+## Namespaces and Operations
+
 ### Machine Translations
 
-#### Engines
+The namespace `mt` contains (synchronous) operations with machine translation.
+
+#### engines
 
 See [the specification](https://api.abbyy.cloud/swagger/ui/index#!/MachineTranslation)
 
@@ -44,7 +55,7 @@ result = CLIENT.mt.engines
 # => [#<ABBYY::Cloud::Models::Engine @name="Sandbox">]
 ```
 
-#### Engine
+#### engine
 
 This operation is built on top of the previous one and simply takes settings for the specified engine:
 
@@ -59,9 +70,29 @@ result.to_h
 # => { name: "Sandbox", languages: ["en", "ru"], translation_directions: [{ source: "en", target: "ru" }] }
 ```
 
+#### default_engine
+
+Returns settings for the engine used in the initializer
+
+```ruby
+CLIENT = ABBYY::Cloud.new(id: "foo", token: "bar", engine: "Bing")
+
+settings_for_bing = CLIENT.mt.default_engine
+```
+
+#### translate
+
+This is the same operation as `translate`, defined for `orders` namespace.
+
+```ruby
+CLIENT.mt.translate("To be or not to be", from: :en, to: :ru, engine: "Bing")
+```
+
 ### Orders
 
-#### Instant Translation
+The namespace `orders` contains various operations with orders.
+
+#### translate
 
 See [the specification](https://api.abbyy.cloud/swagger/ui/index#!/Order/Order_Translate).
 
