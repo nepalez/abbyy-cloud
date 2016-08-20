@@ -27,6 +27,10 @@ class ABBYY::Cloud
           provide_struct :@request_body, struct, &block
         end
 
+        def request_query(struct = nil, &block)
+          provide_struct :@request_query, struct, &block
+        end
+
         def response_body(struct = nil, &block)
           provide_struct :@response_body, struct, &block
         end
@@ -44,20 +48,24 @@ class ABBYY::Cloud
         end
       end
 
+      include Dry::Initializer.define -> do
+        param :settings
+      end
+
+      def_delegators :settings, :connection
       def_delegators :"self.class",
                      :link,
                      :http_method,
                      :path,
                      :request_body,
+                     :request_query,
                      :response_body
 
-      include Dry::Initializer.define -> do
-        param :settings
-      end
-
       def call(**data)
-        body = prepare_request_body(data)
-        res  = settings.connection.call(http_method, path, body: body)
+        body  = prepare_request_body(data)
+        query = prepare_request_query(data)
+        res   = connection.call(http_method, path, body: body, query: query)
+
         handle_response_body(res)
       end
 
@@ -65,6 +73,12 @@ class ABBYY::Cloud
 
       def prepare_request_body(data)
         request_body[data]
+      rescue => error
+        raise ArgumentError.new(link, data, error.message)
+      end
+
+      def prepare_request_query(data)
+        request_query[data]
       rescue => error
         raise ArgumentError.new(link, data, error.message)
       end

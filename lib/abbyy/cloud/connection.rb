@@ -12,30 +12,47 @@ class ABBYY::Cloud
       option :token
     end
 
-    def call(http_method, path, body: nil, headers: nil)
-      uri = root.merge(path).tap { |item| item.scheme = "https" }
-      req = prepare_request(http_method, uri, JSON(body.to_h), headers.to_h)
+    attr_reader :root
 
-      Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
-        handle_response http.request(req)
+    def call(http_method, path, **options)
+      uri = prepare_uri(path, options)
+      req = Net::HTTP.const_get(http_method.capitalize).new(uri)
+      setup_headers(req, options)
+      setup_body(req, options)
+
+      res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+        http.request(req)
       end
+      handle_response(res)
     end
 
     private
 
-    def root
-      @root ||= URI("https://api.abbyy.cloud").merge("v#{version}/")
+    def initialize(*)
+      super
+      @root = URI("https://api.abbyy.cloud")
+              .merge("v#{version}/")
+              .tap { |item| item.scheme = "https" }
     end
 
-    def prepare_request(http_method, uri, body, headers)
-      Net::HTTP.const_get(http_method.capitalize).new(uri).tap do |req|
-        req.body = body
-        req.basic_auth id, token
-        req["accept-charset"] = "utf-8"
-        req["accept"] = "application/json"
-        req["content-type"] = "application/json"
-        headers.each { |key, value| req[key.to_s] = value }
-      end
+    def prepare_uri(path, query: nil, **)
+      uri   = root.merge(path)
+      query = query.to_h.map { |k, v| "#{k}=#{v}" if val }.compact.join("&")
+      uri.query = query unless query.empty?
+      uri
+    end
+
+    def setup_headers(req, headers: nil, **)
+      req.basic_auth id, token
+      req["accept-charset"] = "utf-8"
+      req["accept"]         = "application/json"
+      req["content-type"]   = "application/json"
+      headers.to_h.each { |key, value| req[key.to_s] = value }
+    end
+
+    def setup_body(req, body: nil, **)
+      return unless req["content-type"] == "application/json"
+      req.body = JSON(body.to_h)
     end
 
     def handle_response(response)
