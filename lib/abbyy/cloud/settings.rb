@@ -3,10 +3,10 @@
 class ABBYY::Cloud
   class Settings
     include Dry::Initializer.define -> do
-      option :id,      type: Types::AuthId
-      option :token,   type: Types::AuthToken
-      option :version, type: Types::Version, default: proc { 0 }
+      option :id,      type: Types::Strict::String
+      option :token,   type: Types::Strict::String
       option :engine,  type: Types::Strict::String, default: proc { "Sandbox" }
+      option :version, type: Types::Version,        default: proc { 0 }
     end
 
     def connection

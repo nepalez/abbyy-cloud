@@ -51,7 +51,7 @@ RSpec.describe ABBYY::Cloud::Types, ".Locale" do
 
   it "declines locales that mismatch IANA/IETF standards" do
     %w(i en_EN).each do |locale|
-      expect { p locale; subject[locale] }.to raise_error
+      expect { subject[locale] }.to raise_error(StandardError)
     end
   end
 end

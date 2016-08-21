@@ -4,6 +4,8 @@
 
 * Operation `mt.engine(name)` (nepalez)
 * Operation `mt.default_engine` (nepalez)
+* Operation `mt.translate` as an alias for `orders.translate` (nepalez)
+* Operation `prices.details` (nepalez)
 * Validation of locales following IANA & RFC-5646 (nepalez)
 
 ### Internal

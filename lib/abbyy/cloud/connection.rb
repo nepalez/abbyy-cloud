@@ -37,7 +37,7 @@ class ABBYY::Cloud
 
     def prepare_uri(path, query: nil, **)
       uri   = root.merge(path)
-      query = query.to_h.map { |k, v| "#{k}=#{v}" if val }.compact.join("&")
+      query = query.to_h.map { |k, v| "#{k}=#{v}" if v }.compact.join("&")
       uri.query = query unless query.empty?
       uri
     end

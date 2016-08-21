@@ -3,7 +3,7 @@ class ABBYY::Cloud
   module Models
     # Result of the order translation
     class Translation < Struct
-      attribute :id,          Types::OrderId
+      attribute :id,          Types::Strict::String
       attribute :translation, Types::Strict::String
     end
   end

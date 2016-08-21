@@ -141,6 +141,35 @@ error.data.error # => "error message"
 # etc.
 ```
 
+### Prices
+
+The namespace `prices` contains operations with prices details.
+
+#### details
+
+See [the specification](https://api.abbyy.cloud/swagger/ui/index#!/Prices/Prices_GetAccountPrices).
+
+```ruby
+list = CLIENT.prices.details
+
+list.first.to_h
+# {
+#   id:          "foo",
+#   account_id:  "bar",
+#   type:        "qux",
+#   from:        "ru",
+#   to:          "en",
+#   unit_prices: [{ unit_type: "Words", currency: "USD", amount: 0.03 }],
+#   discounts:   [{ discount_type: "TMTextMatch", discount: 0.01 }],
+#   created:     Time.now
+# }
+
+```
+
+It returns array of prices. The number of items can be several thousands. You can specify `skip` and `take` options to take necessary items only, otherwise it will return all prices.
+
+Notice, though, that every single request can return no more than 1000 items. If you request more prices, several requests will be made one-by-one. Parsing all the results can be pretty slow.
+
 ## Compatibility
 
 [WIP] Compatible to [ABBYY Cloud API v.0][abbyy-api].
