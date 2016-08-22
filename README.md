@@ -102,7 +102,7 @@ Translates an array of strings in one request
 See [the specification](https://api.abbyy.cloud/swagger/ui/index#!/Order/Order_TranslateSegments)
 
 ```ruby
-result = CLIENT.orders.translate_segments(["To be", "or not to be"], from: :en, to: :ru)
+result = CLIENT.mt.translate_segments(["To be", "or not to be"], from: :en, to: :ru)
 
 result.class       # => ABBYY::Cloud::Models::TranslationSequence
 result.map(&:text) # => ["Быть", "или не быть"]
