@@ -1,3 +1,5 @@
+require_relative "locale"
+
 class ABBYY::Cloud
   module Models
     # Description of the translation direction

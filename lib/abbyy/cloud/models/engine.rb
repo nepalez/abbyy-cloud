@@ -1,3 +1,6 @@
+require_relative "locale"
+require_relative "direction"
+
 class ABBYY::Cloud
   # Collection of models returned in requests
   module Models

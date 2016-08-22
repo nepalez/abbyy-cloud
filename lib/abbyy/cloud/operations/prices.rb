@@ -1,3 +1,5 @@
+require_relative "base"
+
 class ABBYY::Cloud
   module Operations
     class Prices < Base

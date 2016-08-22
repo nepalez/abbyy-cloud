@@ -1,3 +1,5 @@
+require_relative "base"
+
 class ABBYY::Cloud
   module Namespaces
     # Namespace for operations with machine translations

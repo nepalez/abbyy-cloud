@@ -1,3 +1,7 @@
+require_relative "locale"
+require_relative "unit_price"
+require_relative "discount"
+
 class ABBYY::Cloud
   module Models
     # Price details
