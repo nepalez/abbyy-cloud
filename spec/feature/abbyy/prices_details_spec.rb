@@ -9,7 +9,7 @@ RSpec.describe "prices.details" do
       to:          "en",
       unit_prices: [{ unit_type: "Words", currency: "USD", amount: 0.03 }],
       discounts:   [{ discount_type: "TMTextMatch", discount: 0.01 }],
-      created:     Time.parse('2017-03-09 18:19')
+      created:     Time.parse("2017-03-09 18:19")
     }
   end
 
