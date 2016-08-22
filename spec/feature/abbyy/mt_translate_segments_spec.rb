@@ -1,4 +1,4 @@
-RSpec.describe "orders.translate" do
+RSpec.describe "mt.translate_segments" do
   let(:client)          { ABBYY::Cloud.new settings }
   let(:settings)        { { id: "foo", token: "bar", engine: default_engine } }
   let(:default_engine)  { "Google" }
@@ -6,9 +6,9 @@ RSpec.describe "orders.translate" do
   let(:source_language) { "ru" }
   let(:target_language) { "en" }
   let(:source_text)     { "Бить или не бить" }
-  let(:path)            { "https://api.abbyy.cloud/v0/order/mt/sync" }
+  let(:path)            { "https://api.abbyy.cloud/v1/order/mt/sync" }
   let(:response_status) { 200 }
-  let(:response_model)  { { id: "42", translation: "To beat or not to beat" } }
+  let(:response_model)  { { id: "42", text: "To beat or not to beat" } }
   let(:params) do
     { from: source_language, to: target_language, engine: custom_engine }
   end
@@ -18,10 +18,10 @@ RSpec.describe "orders.translate" do
       .with(basic_auth: %w(foo bar))
       .to_return status:  response_status,
                  headers: { "Content-Type" => "application/json" },
-                 body:    JSON(response_model)
+                 body:    JSON([response_model])
   end
 
-  subject { client.orders.translate source_text, params }
+  subject { client.mt.translate_segments [source_text], params }
 
   it "sends a request to ABBYY Cloud API" do
     subject
@@ -29,8 +29,9 @@ RSpec.describe "orders.translate" do
   end
 
   it "returns translation model" do
-    expect(subject).to be_instance_of ABBYY::Cloud::Models::Translation
-    expect(subject.to_h).to eq response_model
+    item = subject.first
+    expect(item).to be_kind_of ABBYY::Cloud::Models::TranslationSegment
+    expect(item.to_h).to include response_model
   end
 
   context "without custom engine:" do
@@ -110,7 +111,7 @@ RSpec.describe "orders.translate" do
   end
 
   context "when API responded with error:" do
-    let(:response_status) { 400 }
+    before { stub_request(:post, path).to_return status: 500 }
 
     it "raises ResponseError" do
       expect { subject }.to raise_error(ABBYY::Cloud::ResponseError)

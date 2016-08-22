@@ -4,12 +4,14 @@
 
 * Operation `mt.engine(name)` (nepalez)
 * Operation `mt.default_engine` (nepalez)
-* Operation `mt.translate` as an alias for `orders.translate` (nepalez)
+* Operation `mt.translate` instead of `orders.translate` (nepalez)
+* Operation `mt.translate_segments` (nepalez)
 * Operation `prices.details` (nepalez)
 * Validation of locales following IANA & RFC-5646 (nepalez)
 
 ### Deleted
 
+* Namespace `orders` (nepalez)
 * Remove :version settings (nepalez)
   Every operation has its own version. No global API version is supported.
   When necessary, a version will be send to the operation.

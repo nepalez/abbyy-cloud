@@ -6,7 +6,8 @@ class ABBYY::Cloud
     class TranslationSegment < Struct
       attribute :id,   Types::Strict::String
       attribute :text, Types::Strict::String
-      attribute :tags_transfer_data, Types::Array.member(Types::TransferData)
+      attribute :tags_transfer_data,
+                Types::Array.member(Types::TransferData).default([])
     end
 
     # Registers type Types::TranslationSegment

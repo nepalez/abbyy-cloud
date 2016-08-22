@@ -40,6 +40,24 @@ class ABBYY::Cloud
                                                  engine: settings.engine,
                                                  **opts
       end
+
+      # Instantly (synchronously) translates array of texts
+      #
+      # @example
+      #   translate ["Hello", "world"], from: "en", to: "fr_FR"
+      #
+      # @param  [Array<String>] texts
+      # @option [ABBYY::Cloud::Types::Locale] :from Source language
+      # @option [ABBYY::Cloud::Types::Locale] :to   Target language
+      # @return [ABBYY::Cloud::Models::Translation]
+      #
+      def translate_segments(texts, from:, to:, **opts)
+        sources = texts.map { |text| { text: text } }
+        Operations::TranslateSegments
+          .new(settings)
+          .call sources: sources, from: from, to: to, engine: settings.engine,
+                **opts
+      end
     end
   end
 end

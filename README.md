@@ -33,8 +33,11 @@ CLIENT = ABBYY::Cloud.new id:      "foo",
 And then use the client to provide requests:
 
 ```ruby
-CLIENT.orders.translate("To be or not to be", from: :en, to: :ru).translation
-translation # => "Быть или не быть"
+res = CLIENT.mt.translate("To be or not to be", from: :en, to: :ru)
+res.translation  # => "Быть или не быть"
+
+res = CLIENT.mt.translate_segments ["To be or not to be", "That is the question"], from: "en", to: "ru"
+res.map(&:text) # => ["Быть или не быть", "Это вопрос"]
 ```
 
 ## Namespaces and Operations
@@ -79,22 +82,12 @@ settings_for_bing = CLIENT.mt.default_engine
 
 #### translate
 
-This is the same operation as `translate`, defined for `orders` namespace.
-
-```ruby
-CLIENT.mt.translate("To be or not to be", from: :en, to: :ru, engine: "Bing")
-```
-
-### Orders
-
-The namespace `orders` contains various operations with orders.
-
-#### translate
+Translates a string.
 
 See [the specification](https://api.abbyy.cloud/swagger/ui/index#!/Order/Order_Translate).
 
 ```ruby
-result = CLIENT.orders.translate("To be or not to be", from: :en, to: :ru)
+result = CLIENT.mt.translate("To be or not to be", from: :en, to: :ru)
 
 result.class       # => ABBYY::Cloud::Models::Translation
 result.translation # => "Быть или не быть"
@@ -102,40 +95,17 @@ result.id          # => "2832934"
 result.to_h        # => { id: "2832934", translation: "Быть или не быть" }
 ```
 
-You can specify an engine (different from default):
+#### translate_segments
+
+Translates an array of strings in one request
+
+See [the specification](https://api.abbyy.cloud/swagger/ui/index#!/Order/Order_TranslateSegments)
 
 ```ruby
-CLIENT.orders.translate("To be or not to be", from: :en, to: :ru, engine: "Bing")
-```
+result = CLIENT.orders.translate_segments(["To be", "or not to be"], from: :en, to: :ru)
 
-The method raises an exception in case the cloud responded with error.
-
-```ruby
-error = \
-  begin
-    CLIENT.orders.translate("To be or not to be")
-  rescue ABBYY::Cloud::Error => error
-    error
-  end
-
-error.class  # => ABBYY::Cloud::ResponceError
-error.status # => 400
-```
-
-The exception carries returned error model in its `#data` attribute:
-
-```ruby
-error.data   # => ABBYY::Cloud::Models::Error
-error.data.to_h
-# => {
-#   model_state: {},
-#   requiest_id: "string",
-#   error: "error message",
-#   error_description: "some details"
-# }
-
-error.data.error # => "error message"
-# etc.
+result.class       # => ABBYY::Cloud::Models::TranslationSequence
+result.map(&:text) # => ["Быть", "или не быть"]
 ```
 
 ### Prices
@@ -163,7 +133,7 @@ list.first.to_h
 
 ```
 
-It returns array of prices. The number of items can be several thousands. You can specify `skip` and `take` options to take necessary items only, otherwise it will return all prices.
+The number of items can be several thousands. You can specify `skip` and `take` options to take necessary items only, otherwise it will return all prices.
 
 Notice, though, that every single request can return no more than 1000 items. If you request more prices, several requests will be made one-by-one. Parsing all the results can be pretty slow.
 
