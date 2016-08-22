@@ -78,6 +78,9 @@ Style/StringLiterals:
 Style/StringLiteralsInInterpolation:
   EnforcedStyle: double_quotes
 
+Style/TernaryParentheses:
+  Enabled: false
+
 Style/TrivialAccessors:
   Exclude:
     - spec/**/*_spec.rb
