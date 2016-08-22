@@ -2,7 +2,7 @@ class ABBYY::Cloud
   module Operations
     class Translate < Base
       link "https://api.abbyy.cloud/swagger/ui/index#!/Order/Order_Translate"
-      path "order/mt/sync"
+      path "v0/order/mt/sync"
       http_method "post"
 
       request_body do

@@ -7,7 +7,6 @@
 class ABBYY::Cloud
   class Connection
     include Dry::Initializer.define -> do
-      option :version
       option :id
       option :token
     end
@@ -30,9 +29,7 @@ class ABBYY::Cloud
 
     def initialize(*)
       super
-      @root = URI("https://api.abbyy.cloud")
-              .merge("v#{version}/")
-              .tap { |item| item.scheme = "https" }
+      @root = URI("https://api.abbyy.cloud").tap { |obj| obj.scheme = "https" }
     end
 
     def prepare_uri(path, query: nil, **)

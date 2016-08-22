@@ -36,14 +36,6 @@ RSpec.describe ABBYY::Cloud::Settings do
         expect { subject }.to raise_error(StandardError)
       end
     end
-
-    context "with wrong version" do
-      before { options[:id] = 1 }
-
-      it "fails" do
-        expect { subject }.to raise_error(StandardError)
-      end
-    end
   end
 
   describe "#id" do
@@ -69,25 +61,11 @@ RSpec.describe ABBYY::Cloud::Settings do
     end
   end
 
-  describe "#version" do
-    subject { settings.version }
-
-    context "by default:" do
-      it { is_expected.to eq 0 }
-    end
-
-    context "when assigned:" do
-      before { options[:version] = 0 }
-      it { is_expected.to eq 0 }
-    end
-  end
-
   describe "#connection" do
     subject { settings.connection }
 
     it { is_expected.to be_instance_of ABBYY::Cloud::Connection }
-    its(:version) { is_expected.to eq settings.version }
-    its(:id)      { is_expected.to eq settings.id }
-    its(:token)   { is_expected.to eq settings.token }
+    its(:id)    { is_expected.to eq settings.id }
+    its(:token) { is_expected.to eq settings.token }
   end
 end

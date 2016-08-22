@@ -4,7 +4,7 @@ class ABBYY::Cloud
       # rubocop: disable Metrics/LineLength
       link "https://api.abbyy.cloud/swagger/ui/index#!/MachineTranslation/MachineTranslation_Engines"
       # rubocop: enable Metrics/LineLength
-      path "mt/engines"
+      path "v0/mt/engines"
       http_method "get"
 
       response_body Types::Array.member(Types::Engine)

@@ -1,5 +1,5 @@
 RSpec.describe ABBYY::Cloud::Connection do
-  let(:connection) { described_class.new version: 0, id: "baz", token: "qux" }
+  let(:connection) { described_class.new id: "baz", token: "qux" }
 
   subject do
     connection.call :post,

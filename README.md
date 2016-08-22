@@ -22,15 +22,12 @@ require "abbyy/cloud"
 CLIENT = ABBYY::Cloud.new(id: "foo", token: "bar")
 ```
 
-The only supported API version is `0`. By default the translation engine is set to "Sandbox".
-
 You can set these options explicitly:
 
 ```ruby
 CLIENT = ABBYY::Cloud.new id:      "foo",
                           token:   "bar",
-                          engine:  "Sandbox", # default engine for translations
-                          version: 0          # the only supported version
+                          engine:  "Sandbox" # default engine for translations
 ```
 
 And then use the client to provide requests:

@@ -4,7 +4,7 @@ class ABBYY::Cloud
       # rubocop: disable Metrics/LineLength
       link "https://api.abbyy.cloud/swagger/ui/index#!/Prices/Prices_GetAccountPrices"
       # rubocop: enable Metrics/LineLength
-      path "prices/details"
+      path "v0/prices/details"
       http_method "get"
 
       request_query do

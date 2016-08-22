@@ -8,6 +8,12 @@
 * Operation `prices.details` (nepalez)
 * Validation of locales following IANA & RFC-5646 (nepalez)
 
+### Deleted
+
+* Remove :version settings (nepalez)
+  Every operation has its own version. No global API version is supported.
+  When necessary, a version will be send to the operation.
+
 ### Internal
 
 * Added support for query part of a request (nepalez)
