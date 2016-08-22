@@ -14,8 +14,8 @@ class ABBYY::Cloud
       # as necessary to get all prices.
       #
       def details(skip: 0, take: nil, **opts)
-        take_now   = take&.<=(MAX_PER_REQUEST) ? take : MAX_PER_REQUEST
-        take_later = take&.-(take_now)
+        take_now   = (take && take <= MAX_PER_REQUEST) ? take : MAX_PER_REQUEST
+        take_later = take - take_now if take
         skip_later = skip + take_now
 
         items = Operations::Prices.new(settings)
