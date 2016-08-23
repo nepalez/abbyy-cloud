@@ -1,3 +1,11 @@
+# [v0.0.5 2016-08-23](https://github.com/nepalez/abbyy-cloud/tree/v0.0.5)
+
+### Fixed
+
+* Loading order (nepalez)
+
+[Compare v0.0.4...v0.0.5](https://github.com/nepalez/abbyy-cloud/compare/v0.0.4...v0.0.5)
+
 # [v0.0.4 2016-08-23](https://github.com/nepalez/abbyy-cloud/tree/v0.0.4)
 
 ### Added
