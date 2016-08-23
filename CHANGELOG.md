@@ -1,4 +1,4 @@
-# Master (to be released)
+# [v0.0.4 2016-08-23](https://github.com/nepalez/abbyy-cloud/tree/v0.0.4)
 
 ### Added
 
@@ -20,7 +20,7 @@
 
 * Added support for query part of a request (nepalez)
 
-[Compare v0.0.3...HEAD](https://github.com/nepalez/abbyy-cloud/compare/v0.0.3...HEAD)
+[Compare v0.0.3...v0.0.4](https://github.com/nepalez/abbyy-cloud/compare/v0.0.3...v0.0.4)
 
 # [v0.0.3 2016-08-18](https://github.com/nepalez/abbyy-cloud/tree/v0.0.3)
 
