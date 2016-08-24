@@ -21,7 +21,7 @@ class ABBYY::Cloud
         items = Operations::Prices.new(settings)
                                   .call(skip: skip, take: take_now, **opts)
 
-        return items if (items.count < take_now) || (take_later == 0)
+        return items if (items.count < take_now) || take_later&.zero?
         items + details(skip: skip_later, take: take_later, **opts)
       end
     end

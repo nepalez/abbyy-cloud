@@ -25,14 +25,6 @@ RSpec.describe ABBYY::Cloud::Models::Price do
     end
   end
 
-  context "without account_id:" do
-    before { data.delete :account_id }
-
-    it "fails" do
-      expect { subject }.to raise_error(StandardError)
-    end
-  end
-
   context "without type:" do
     before { data.delete :type }
 

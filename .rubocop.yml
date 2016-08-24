@@ -41,20 +41,20 @@ Style/AccessorMethodName:
 Style/Alias:
   Enabled: false # `alias_method` and `alias` have diferent behaviour
 
-Style/FileName:
-  Enabled: false
-
-Style/Lambda:
-  Enabled: false
-
 Style/ClassAndModuleChildren:
   Enabled: false
 
-Style/NumericLiterals:
+Style/FileName:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
   Enabled: false # not to be used before migration to Ruby 3+
+
+Style/Lambda:
+  Enabled: false
+
+Style/NumericLiterals:
+  Enabled: false
 
 Style/RaiseArgs:
   Enabled: false
