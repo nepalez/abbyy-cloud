@@ -7,7 +7,7 @@ class ABBYY::Cloud
     # Price details
     class Price < Struct
       attribute :id,          Types::Strict::String
-      attribute :account_id,  Types::Strict::String
+      attribute :account_id,  Types::Strict::String.optional
       attribute :type,        Types::Strict::String
       attribute :from,        Types::Locale
       attribute :to,          Types::Locale

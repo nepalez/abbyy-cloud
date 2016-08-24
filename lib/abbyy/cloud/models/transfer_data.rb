@@ -1,7 +1,5 @@
 class ABBYY::Cloud
   module Models
-    TYPES = %w(Start End Placeholder).freeze
-
     # Tag for translation source/target
     class TransferData < Struct
       attribute :position, Types::Strict::Int
