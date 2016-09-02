@@ -27,6 +27,7 @@ module ABBYY
     require_relative "cloud/models/translation"
     require_relative "cloud/models/translation_segment"
     require_relative "cloud/models/unit_price"
+    require_relative "cloud/models/file_reference"
 
     require_relative "cloud/operations/base"
     require_relative "cloud/operations/engines"
