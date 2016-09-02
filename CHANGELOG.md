@@ -1,3 +1,11 @@
+# Master (to be released)
+
+### Added
+
+* Operation `orders.create(options)` (nepalez)
+
+[Compare v0.0.5...HEAD](https://github.com/nepalez/abbyy-cloud/compare/v0.0.5...HEAD)
+
 # [v0.0.5 2016-08-23](https://github.com/nepalez/abbyy-cloud/tree/v0.0.5)
 
 ### Fixed
