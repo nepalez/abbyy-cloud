@@ -38,15 +38,21 @@ module ABBYY
     require_relative "cloud/operations/prices"
     require_relative "cloud/operations/translate"
     require_relative "cloud/operations/translate_segments"
+    require_relative "cloud/operations/submit_order"
 
     require_relative "cloud/namespaces/base"
     require_relative "cloud/namespaces/machine_translations"
+    require_relative "cloud/namespaces/orders"
     require_relative "cloud/namespaces/prices"
 
     attr_reader :settings
 
     def mt
       Namespaces::MachineTranslations.new(settings)
+    end
+
+    def orders
+      Namespaces::Orders.new(settings)
     end
 
     def prices
