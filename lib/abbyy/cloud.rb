@@ -31,6 +31,7 @@ module ABBYY
     require_relative "cloud/models/file_link"
     require_relative "cloud/models/order_statistics"
     require_relative "cloud/models/translation_link"
+    require_relative "cloud/models/full_order"
 
     require_relative "cloud/operations/base"
     require_relative "cloud/operations/engines"
