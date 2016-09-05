@@ -1,5 +1,6 @@
 require "dry-initializer"
 require "dry-struct"
+require "hashie/mash"
 require "json"
 require "net/http"
 require "net/https"

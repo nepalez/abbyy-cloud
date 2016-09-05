@@ -6,7 +6,7 @@ class ABBYY::Cloud
       # rubocop: disable Metrics/LineLength
       link "https://api.abbyy.cloud/swagger/ui/index#!/Order/Order_TranslateSegments"
       # rubocop: enable Metrics/LineLength
-      path "v1/order/mt/sync"
+      path { "v1/order/mt/sync" }
       http_method "post"
 
       request_body do

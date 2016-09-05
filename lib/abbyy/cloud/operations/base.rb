@@ -15,8 +15,8 @@ class ABBYY::Cloud
           @http_method || "Post"
         end
 
-        def path(value = nil)
-          value ? @path = value : @path
+        def path(&block)
+          block ? @path = block : @path
         end
 
         def link(value = nil)
@@ -62,9 +62,11 @@ class ABBYY::Cloud
                      :response_body
 
       def call(**data)
+        mash  = Hashie::Mash.new(data)
+        url   = mash.instance_eval(&path)
         body  = prepare_request_body(data)
         query = prepare_request_query(data)
-        res   = connection.call(http_method, path, body: body, query: query)
+        res   = connection.call(http_method, url, body: body, query: query)
 
         handle_response_body(res)
       end
