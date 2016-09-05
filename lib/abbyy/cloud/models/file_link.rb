@@ -1,6 +1,5 @@
 class ABBYY::Cloud
   module Models
-    # Reference to uploaded translation
     class FileLink < FileReference
       attribute :name,        Types::Strict::String
       attribute :language,    Types::Locale

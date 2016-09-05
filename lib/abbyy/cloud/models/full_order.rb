@@ -1,6 +1,12 @@
+require_relative "currency"
+require_relative "label"
+require_relative "payment_type"
+require_relative "status"
+require_relative "translation_type"
+require_relative "unit_type"
+
 class ABBYY::Cloud
   module Models
-    # Full data for translation orders
     class FullOrder < Struct
       attribute :amount, Types::Coercible::Float
       attribute :approval_required, Types::Form::Bool

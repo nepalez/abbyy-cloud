@@ -1,7 +1,7 @@
+require_relative "status"
+
 class ABBYY::Cloud
-  # Collection of models returned in requests
   module Models
-    # Link to results of async translation
     class TranslationLink < Struct
       attribute :delivered, Types::Form::Time
       attribute :started, Types::Form::Time

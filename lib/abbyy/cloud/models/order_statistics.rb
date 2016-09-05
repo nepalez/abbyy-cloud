@@ -2,7 +2,6 @@ require_relative "source_tag"
 
 class ABBYY::Cloud
   module Models
-    # Statistics for the order translation
     class OrderStatistics < Struct
       attribute :documents_count, Types::Coercible::Int
       attribute :pages_count,     Types::Coercible::Int

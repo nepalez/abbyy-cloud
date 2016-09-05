@@ -2,7 +2,6 @@ require_relative "locale"
 
 class ABBYY::Cloud
   module Models
-    # Description of the translation direction
     class Direction < Struct
       attribute :source, Types::Locale
       attribute :target, Types::Locale

@@ -2,9 +2,7 @@ require_relative "locale"
 require_relative "direction"
 
 class ABBYY::Cloud
-  # Collection of models returned in requests
   module Models
-    # Description of the engine
     class Engine < Struct
       attribute :name,                   Types::Strict::String
       attribute :languages,              Types::Array.member(Types::Locale)

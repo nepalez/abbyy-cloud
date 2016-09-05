@@ -1,6 +1,7 @@
+require_relative "discount_type"
+
 class ABBYY::Cloud
   module Models
-    # Description of the price discount
     class Discount < Struct
       attribute :discount_type, Types::DiscountType
       attribute :discount,      Types::Coercible::Float

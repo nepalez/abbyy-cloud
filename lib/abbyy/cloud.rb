@@ -16,6 +16,7 @@ module ABBYY
     require_relative "cloud/exceptions/response_error"
     require_relative "cloud/exceptions/type_error"
 
+    require_relative "cloud/models/cost_type"
     require_relative "cloud/models/direction"
     require_relative "cloud/models/discount"
     require_relative "cloud/models/engine"

@@ -1,3 +1,6 @@
+require_relative "currency"
+require_relative "unit_type"
+
 class ABBYY::Cloud
   module Models
     # Price details
