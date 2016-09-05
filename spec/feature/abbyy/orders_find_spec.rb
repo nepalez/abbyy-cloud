@@ -65,7 +65,6 @@ RSpec.describe "orders.find" do
     }
   end
 
-
   subject { client.orders.find(45) }
 
   context "when API returned valid data:" do
