@@ -8,6 +8,10 @@ class ABBYY::Cloud
       def create(options)
         Operations::SubmitOrder.new(settings).call(options)
       end
+
+      def find(id)
+        Operations::FindOrder.new(settings).call(id: id)
+      end
     end
   end
 end

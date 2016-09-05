@@ -40,6 +40,7 @@ module ABBYY
     require_relative "cloud/operations/translate"
     require_relative "cloud/operations/translate_segments"
     require_relative "cloud/operations/submit_order"
+    require_relative "cloud/operations/find_order"
 
     require_relative "cloud/namespaces/base"
     require_relative "cloud/namespaces/machine_translations"
