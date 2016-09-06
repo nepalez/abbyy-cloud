@@ -1,7 +1,7 @@
 module ABBYY::Cloud::Types
   include Dry::Types.module
 
-  # Gem-specific primitives
+  # Gem-specific primitive types
   FilledArray = Array.constrained(min_size: 1)
 
   # Registers new coercible type

@@ -1,6 +1,6 @@
 class ABBYY::Cloud
   module Models
-    class OCRWarningType < ::String
+    class OcrWarningType < ::String
       VALUES = %w(
         BrightnessIsTooHigh
         BrightnessIsTooLow
@@ -23,7 +23,7 @@ class ABBYY::Cloud
       end
     end
 
-    # Registers type Types::OCRWarningType
-    Types.register_type OCRWarningType
+    # Registers type Types::OcrWarningType
+    Types.register_type OcrWarningType
   end
 end
