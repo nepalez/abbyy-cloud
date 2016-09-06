@@ -1,4 +1,5 @@
 require_relative "status"
+require_relative "file_link"
 
 class ABBYY::Cloud
   module Models

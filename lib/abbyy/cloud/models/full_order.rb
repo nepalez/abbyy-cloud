@@ -1,7 +1,10 @@
 require_relative "currency"
 require_relative "label"
+require_relative "locale"
+require_relative "order_statistics"
 require_relative "payment_type"
 require_relative "status"
+require_relative "translation_link"
 require_relative "translation_type"
 require_relative "unit_type"
 

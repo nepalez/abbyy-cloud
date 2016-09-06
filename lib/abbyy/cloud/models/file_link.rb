@@ -1,3 +1,6 @@
+require_relative "file_reference"
+require_relative "locale"
+
 class ABBYY::Cloud
   module Models
     class FileLink < FileReference
