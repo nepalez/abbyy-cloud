@@ -31,6 +31,10 @@ module ABBYY
       Namespaces::Prices.new(settings)
     end
 
+    def files
+      Namespaces::Files.new(settings)
+    end
+
     private
 
     def initialize(*args)
