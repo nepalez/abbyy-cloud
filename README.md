@@ -108,6 +108,21 @@ result.class       # => ABBYY::Cloud::Models::TranslationSequence
 result.map(&:text) # => ["Быть", "или не быть"]
 ```
 
+### Files
+
+The namespace `files` contains operations with <uploaded> files.
+
+#### download
+
+Dowloads a file by id and token
+
+See [the specification](https://api.abbyy.cloud/swagger/ui/index#!/File/File_DownloadFile)
+
+```ruby
+result = CLIENT.files.download(id: "foo", token: "bar")
+# => #<StringIO ...>
+```
+
 ### Prices
 
 The namespace `prices` contains operations with prices details.
