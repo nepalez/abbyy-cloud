@@ -2,9 +2,10 @@
 
 ### Added
 
+* Operation `files.upload` (nepalez)
+* Operation `files.download` (nepalez)
 * Operation `orders.create(options)` (nepalez)
 * Operation `orders.find(id)` (nepalez)
-* Operation `files.download` (nepalez)
 
 [Compare v0.0.5...HEAD](https://github.com/nepalez/abbyy-cloud/compare/v0.0.5...HEAD)
 

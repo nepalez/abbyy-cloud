@@ -112,6 +112,20 @@ result.map(&:text) # => ["Быть", "или не быть"]
 
 The namespace `files` contains operations with <uploaded> files.
 
+#### upload
+
+Uploads a file
+
+See [the specification](https://api.abbyy.cloud/swagger/ui/index#!/File/File_UploadFile)
+
+```ruby
+file   = File.read("file_to_upload.xml")
+result = CLIENT.files.upload file
+result.id    # => "18323"
+result.token # => "foobarbaz"
+#  ...
+```
+
 #### download
 
 Dowloads a file by id and token
