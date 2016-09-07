@@ -10,10 +10,10 @@ class ABBYY::Cloud
       request_type :file
 
       request_query do
-        attribute :quality,       Types::OcrQuality
-        attribute :synthesisMode, Types::OcrMode
-        attribute :exportFormat,  Types::FileFormat
-        attribute :languages,     Types::Array.member(Types::Locale)
+        attribute :quality,       Types::OcrQuality.optional
+        attribute :synthesisMode, Types::OcrMode.optional
+        attribute :exportFormat,  Types::FileFormat.optional
+        attribute :languages,     Types::Array.member(Types::Locale).optional
       end
 
       response_body Models::FileInfo

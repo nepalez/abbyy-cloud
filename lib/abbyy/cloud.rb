@@ -4,6 +4,7 @@ require "hashie/mash"
 require "json"
 require "net/http"
 require "net/https"
+require "multipart_body"
 
 module ABBYY
   class Cloud

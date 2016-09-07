@@ -6,10 +6,9 @@ class ABBYY::Cloud
     # @see [https://api.abbyy.cloud/swagger/ui/index#!/File] ABBYY Cloud API
     class Files < Base
       def upload(file, export_format: nil, synthesis_mode: nil, **options)
-        Operations::UploadFile.new(settings).call file,
-                                                  exportFormat:  export_format,
-                                                  synthesisMode: synthesis_mode,
-                                                  **options
+        options[:exportFormat]  = export_format  if export_format
+        options[:synthesisMode] = synthesis_mode if synthesis_mode
+        Operations::UploadFile.new(settings).call(file, **options)
       end
 
       def download(id:, token:)
