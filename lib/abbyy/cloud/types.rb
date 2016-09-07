@@ -3,6 +3,7 @@ module ABBYY::Cloud::Types
 
   # Gem-specific primitive types
   FilledArray = Array.constrained(min_size: 1)
+  FileContent = Strict::String.constructor(&:read)
 
   # Registers new coercible type
   def self.register_type(klass, as: nil, constructor: :new)

@@ -13,11 +13,11 @@ class ABBYY::Cloud
 
     attr_reader :root
 
-    def call(http_method, path, **options)
+    def call(http_method, path, body: nil, **options)
       uri = prepare_uri(path, options)
       req = Net::HTTP.const_get(http_method.capitalize).new(uri)
+      req.body = body
       setup_headers(req, options)
-      setup_body(req, options)
 
       res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
         http.request(req)
@@ -42,14 +42,7 @@ class ABBYY::Cloud
     def setup_headers(req, headers: nil, **)
       req.basic_auth id, token
       req["accept-charset"] = "utf-8"
-      req["accept"]         = "application/json"
-      req["content-type"]   = "application/json"
       headers.to_h.each { |key, value| req[key.to_s] = value }
-    end
-
-    def setup_body(req, body: nil, **)
-      return unless req["content-type"] == "application/json"
-      req.body = JSON(body.to_h)
     end
 
     def handle_response(response)
