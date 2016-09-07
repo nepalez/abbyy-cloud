@@ -12,12 +12,6 @@ AllCops:
     - vendor/**/*
   TargetRubyVersion: 2.3
 
-RSpec/NamedSubject:
-  Enabled: false
-
-RSpec/DescribeClass:
-  Enabled: false
-
 Documentation:
   Enabled: false
 
