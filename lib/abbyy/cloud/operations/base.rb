@@ -31,6 +31,10 @@ class ABBYY::Cloud
           provide_struct :@request_query, struct, &block
         end
 
+        def response_type(value = nil)
+          value ? (@response_type = value) : (@response_type || :json)
+        end
+
         def response_body(struct = nil, &block)
           provide_struct :@response_body, struct, &block
         end
@@ -59,6 +63,7 @@ class ABBYY::Cloud
                      :path,
                      :request_body,
                      :request_query,
+                     :response_type,
                      :response_body
 
       def call(**data)
@@ -68,7 +73,7 @@ class ABBYY::Cloud
         query = prepare_request_query(data)
         res   = connection.call(http_method, url, body: body, query: query)
 
-        handle_response_body(res)
+        handle_response_body res
       end
 
       private
@@ -86,7 +91,11 @@ class ABBYY::Cloud
       end
 
       def handle_response_body(data)
-        response_body[data]
+        case response_type
+        when :json then response_body[JSON.parse(data)]
+        when :file then StringIO.new(data)
+        else data
+        end
       rescue => error
         raise TypeError.new(link, data, error.message)
       end

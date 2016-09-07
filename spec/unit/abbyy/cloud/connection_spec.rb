@@ -36,7 +36,7 @@ RSpec.describe ABBYY::Cloud::Connection do
     end
 
     it "returns the response body" do
-      expect(subject).to eq("answer" => 42)
+      expect(subject).to eq(JSON(answer: 42))
     end
   end
 

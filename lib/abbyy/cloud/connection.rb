@@ -54,7 +54,7 @@ class ABBYY::Cloud
 
     def handle_response(response)
       raise ResponseError.new(response) unless response.is_a? Net::HTTPSuccess
-      JSON.parse(response.body)
+      response.body
     end
   end
 end
