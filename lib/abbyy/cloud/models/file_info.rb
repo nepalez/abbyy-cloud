@@ -1,7 +1,8 @@
+require_relative "file_reference"
 require_relative "locale"
-require_relative "ocr_warning"
 require_relative "ocr_settings"
 require_relative "ocr_statistics"
+require_relative "ocr_warning"
 require_relative "reading_status"
 require_relative "text_statistics"
 
