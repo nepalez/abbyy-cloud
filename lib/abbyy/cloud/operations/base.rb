@@ -6,7 +6,6 @@
 class ABBYY::Cloud
   module Operations
     class Base
-      # Helpers to specify concrete operations
       class << self
         include Forwardable
 
@@ -62,14 +61,8 @@ class ABBYY::Cloud
 
       def_delegators :settings, :connection
       def_delegators :"self.class",
-                     :link,
-                     :http_method,
-                     :path,
-                     :request_type,
-                     :request_body,
-                     :request_query,
-                     :response_type,
-                     :response_body
+                     :link, :http_method, :path, :request_type, :request_body,
+                     :request_query, :response_type, :response_body
 
       def call(file = nil, **data)
         mash      = Hashie::Mash.new(data)
