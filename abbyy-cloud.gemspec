@@ -1,6 +1,6 @@
 Gem::Specification.new do |gem|
   gem.name     = "abbyy-cloud"
-  gem.version  = "0.0.5"
+  gem.version  = "0.0.6"
   gem.authors  = ["Andrew Kozin"]
   gem.email    = ["andrew.kozin@gmail.com"]
   gem.summary  = "HTTP client to ABBYY Cloud API"
@@ -16,8 +16,8 @@ Gem::Specification.new do |gem|
 
   gem.add_runtime_dependency "dry-initializer", "~> 0.4.0"
   gem.add_runtime_dependency "dry-struct", "~> 0.0.1"
-  gem.add_runtime_dependency "hashie"
-  gem.add_runtime_dependency "multipart_body"
+  gem.add_runtime_dependency "hashie", "~> 3.4"
+  gem.add_runtime_dependency "multipart_body", "~> 0.2"
 
   gem.add_development_dependency "bundler", "~> 1.12"
   gem.add_development_dependency "rake", "~> 10.0"
