@@ -16,7 +16,7 @@ class ABBYY::Cloud
         attribute :languages,     Types::Array.member(Types::Locale).optional
       end
 
-      response_body Models::FileInfo
+      response_body Types::Array.member(Types::FileInfo)
     end
   end
 end

@@ -9,7 +9,7 @@ class ABBYY::Cloud
       @status = response.code.to_i
 
       super <<-MESSAGE.gsub(/ +\|/, "")
-        |ABBYY Cloud API responded to the request {data.request_id} with a status #{status}
+        |ABBYY Cloud API responded to the request #{data.request_id} with a status #{status}
         |  error:       #{data.error}
         |  description: #{data.error_description}
         |  model_state: #{data.model_state}

@@ -15,14 +15,15 @@ class ABBYY::Cloud
       attribute :is_deleted,         Types::Form::Bool
       attribute :reading_status,     Types::Strict::String
       attribute :reading_progress,   Types::Coercible::Int
-      attribute :expected_languages, Types::Array.member(Types::Locale)
+      attribute :expected_languages, Types::Array.member(Types::Locale).optional
       attribute :processed,          Types::Form::Time.optional
       attribute :deleted,            Types::Form::Time.optional
       attribute :error,              Types::Strict::String.optional
       attribute :statistics,         Types::TextStatistics.optional
-      attribute :ocr_warnings,       Types::Array.member(Types::OcrWarning)
       attribute :ocr_settings,       Types::OcrSettings.optional
       attribute :ocr_statistics,     Types::OcrStatistics.optional
+      attribute :ocr_warnings,
+                Types::Array.member(Types::OcrWarning).optional
     end
 
     # Registers type Types::FileInfo

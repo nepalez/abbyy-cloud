@@ -63,7 +63,7 @@ RSpec.describe "files.upload" do
       .with(basic_auth: %w(foo bar))
       .to_return status:  200,
                  headers: { "Content-Type" => "application/json" },
-                 body:    JSON(response)
+                 body:    JSON([response])
   end
 
   context "with valid params" do
@@ -72,17 +72,8 @@ RSpec.describe "files.upload" do
       expect(a_request(:post, path)).to have_been_made
     end
 
-    it "returns file info" do
-      expect(subject).to be_kind_of ABBYY::Cloud::Models::FileInfo
-    end
-  end
-
-  context "with wrong file (not an IO):" do
-    let(:file) { "Unknown" }
-
-    it "raises ArgumentError without sending a request" do
-      expect { subject }.to raise_error(ABBYY::Cloud::ArgumentError)
-      expect(a_request(:any, //)).not_to have_been_made
+    it "returns array of file info" do
+      expect(subject.first).to be_kind_of ABBYY::Cloud::Models::FileInfo
     end
   end
 
