@@ -18,7 +18,8 @@ RSpec.describe "orders.create" do
       currency:             "RUB",
       from:                 "ru",
       to:                   ["de"],
-      files:                [{ id: "foo", token: "bar" }]
+      files:                [{ id: "foo", token: "bar" }],
+      category:             "Games > Lego"
     }
   end
 

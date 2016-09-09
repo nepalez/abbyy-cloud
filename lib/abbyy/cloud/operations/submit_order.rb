@@ -24,6 +24,7 @@ class ABBYY::Cloud
         attribute :label, Types::Label.optional
         attribute :to, Types::FilledArray.member(Types::Locale)
         attribute :files, Types::FilledArray.member(Types::FileReference)
+        attribute :category, Types::Strict::String.optional
       end
 
       response_body Models::FullOrder
