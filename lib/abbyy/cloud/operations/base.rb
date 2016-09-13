@@ -1,3 +1,5 @@
+require_relative "file"
+
 # Base class for specific operations
 # It validates request and response using corresponding structs
 #
@@ -79,11 +81,10 @@ class ABBYY::Cloud
 
       private
 
-      def prepare_multipart(file, content_type: "plain/text", **)
+      def prepare_multipart(data, content_type: "plain/text", **)
         name = SecureRandom.hex(10)
-        data = file.read if file.respond_to?(:read)
-        path = Pathname.new(file.path).basename if file.respond_to?(:path)
-        part = Part.new(name, data || file, path || "file")
+        file = File.new(data)
+        part = Part.new(name, file.read, file.path)
         part.content_type = content_type
         MultipartBody.new [part]
       end
@@ -91,7 +92,7 @@ class ABBYY::Cloud
       def prepare_request_body(multipart, data)
         case request_type
         when :json then JSON(request_body[data].to_h)
-        when :file then multipart.to_s << "\r\n"
+        when :file then [nil, nil, multipart, nil].join("\r\n")
         else data
         end
       rescue => error

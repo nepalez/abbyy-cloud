@@ -5,6 +5,7 @@ require "json"
 require "net/http"
 require "net/https"
 require "multipart_body"
+require "mime-types"
 
 module ABBYY
   class Cloud

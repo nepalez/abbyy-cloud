@@ -21,6 +21,7 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency "dry-struct", "~> 0.0.1"
   gem.add_runtime_dependency "hashie", "~> 3.4"
   gem.add_runtime_dependency "multipart_body", "~> 0.2"
+  gem.add_runtime_dependency "mime-types", "~> 3.1"
 
   gem.add_development_dependency "bundler", "~> 1.12"
   gem.add_development_dependency "rake", "~> 10.0"
