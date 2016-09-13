@@ -14,7 +14,7 @@ module ABBYY
     require_relative "cloud/settings"
 
     %w(exceptions models operations namespaces).each do |dir|
-      path = File.expand_path("lib/abbyy/cloud/#{dir}/**")
+      path = File.expand_path("../cloud/#{dir}/**", __FILE__)
       Dir[path].each { |file| require file }
     end
 
