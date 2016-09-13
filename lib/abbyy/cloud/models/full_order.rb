@@ -11,7 +11,7 @@ require_relative "unit_type"
 class ABBYY::Cloud
   module Models
     class FullOrder < Struct
-      attribute :amount, Types::Coercible::Float
+      attribute :amount, Types::Coercible::Float.optional
       attribute :approval_required, Types::Form::Bool
       attribute :created, Types::Form::Time
       attribute :currency, Types::Currency
@@ -26,18 +26,18 @@ class ABBYY::Cloud
       attribute :is_manual_estimation, Types::Form::Bool
       attribute :label, Types::Label.optional
       attribute :number, Types::Coercible::Int
-      attribute :payment_provider, Types::Strict::String
+      attribute :payment_provider, Types::Strict::String.optional
       attribute :payment_type, Types::PaymentType
       attribute :progress, Types::Coercible::Int
       attribute :started, Types::Form::Time.optional
-      attribute :statistics, Types::OrderStatistics
+      attribute :statistics, Types::OrderStatistics.optional
       attribute :status, Types::Status
       attribute :to, Types::FilledArray.member(Types::Locale)
       attribute :translations, Types::Array.member(Types::TranslationLink)
       attribute :type, Types::TranslationType
-      attribute :unit_count, Types::Coercible::Int
-      attribute :unit_type, Types::UnitType
-      attribute :units_count, Types::Hash
+      attribute :unit_count, Types::Coercible::Int.optional
+      attribute :unit_type, Types::UnitType.optional
+      attribute :units_count, Types::Hash.optional
     end
 
     # Registers type Types::FullOrder

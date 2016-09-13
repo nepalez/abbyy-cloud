@@ -23,7 +23,6 @@ RSpec.describe ABBYY::Cloud::Models::TranslationLink do
       },
       started: "2016-03-13T10:00:00Z",
       delivered: "2019-03-14T11:00:00Z",
-      progress: 10,
       status: "InProgress"
     }
   end
@@ -50,14 +49,6 @@ RSpec.describe ABBYY::Cloud::Models::TranslationLink do
 
   context "without status:" do
     before { data.delete :status }
-
-    it "fails" do
-      expect { subject }.to raise_error(StandardError)
-    end
-  end
-
-  context "without progress:" do
-    before { data.delete :progress }
 
     it "fails" do
       expect { subject }.to raise_error(StandardError)

@@ -134,22 +134,6 @@ RSpec.describe ABBYY::Cloud::Models::FullOrder do
     end
   end
 
-  context "without unit_type:" do
-    before { data.delete :unit_type }
-
-    it "fails" do
-      expect { subject }.to raise_error(StandardError)
-    end
-  end
-
-  context "without unit_count:" do
-    before { data.delete :unit_count }
-
-    it "fails" do
-      expect { subject }.to raise_error(StandardError)
-    end
-  end
-
   context "without currency:" do
     before { data.delete :currency }
 
@@ -176,14 +160,6 @@ RSpec.describe ABBYY::Cloud::Models::FullOrder do
 
   context "without status:" do
     before { data.delete :status }
-
-    it "fails" do
-      expect { subject }.to raise_error(StandardError)
-    end
-  end
-
-  context "without statistics:" do
-    before { data.delete :statistics }
 
     it "fails" do
       expect { subject }.to raise_error(StandardError)

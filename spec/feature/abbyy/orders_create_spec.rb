@@ -64,7 +64,6 @@ RSpec.describe "orders.create" do
       payment_type: "External",
       unit_type: "Words",
       unit_count: 32,
-      units_count: 32,
       currency: "RUB",
       amount: 100.0,
       deadline: "2019-01-23T10:00:00Z",
