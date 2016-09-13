@@ -4,7 +4,7 @@ class ABBYY::Cloud
     class File
       extend Dry::Initializer::Mixin
       param  :source
-      option :mime_type, default: proc { "text/plain" }
+      option :content_type
 
       def read
         source.respond_to?(:read) ? source.read : source
@@ -22,7 +22,7 @@ class ABBYY::Cloud
       private
 
       def ext
-        MIME::Types[mime_type].first.preferred_extension
+        MIME::Types[content_type].first.preferred_extension
       end
     end
   end

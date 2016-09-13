@@ -81,9 +81,9 @@ class ABBYY::Cloud
 
       private
 
-      def prepare_multipart(data, content_type: "plain/text", **)
+      def prepare_multipart(data, content_type: "text/plain", **)
         name = SecureRandom.hex(10)
-        file = File.new(data)
+        file = File.new(data, content_type: content_type)
         part = Part.new(name, file.read, file.path)
         part.content_type = content_type
         MultipartBody.new [part]
