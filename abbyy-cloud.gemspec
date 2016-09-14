@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |gem|
   gem.name     = "abbyy-cloud"
-  gem.version  = "0.0.6"
+  gem.version  = "0.0.7"
   gem.authors  = ["Andrew Kozin"]
   gem.email    = ["andrew.kozin@gmail.com"]
   gem.summary  = "HTTP client to ABBYY Cloud API"
