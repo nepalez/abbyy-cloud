@@ -14,10 +14,9 @@ class ABBYY::Cloud
         attribute :email, Types::Strict::String.optional
         attribute :contact_culture, Types::Strict::String.optional
         attribute :contact_utc_offset, Types::Coercible::String.optional
-        attribute :mt_engine, Types::Strict::String
+        attribute :mt_engine, Types::Strict::String.optional
         attribute :approval_required, Types::Form::Bool
         attribute :is_manual_estimation, Types::Form::Bool
-        attribute :cost_type, Types::CostType
         attribute :unit_type, Types::UnitType
         attribute :currency, Types::Currency
         attribute :from, Types::Locale
@@ -25,6 +24,8 @@ class ABBYY::Cloud
         attribute :to, Types::FilledArray.member(Types::Locale)
         attribute :files, Types::FilledArray.member(Types::FileReference)
         attribute :category, Types::Strict::String.optional
+        attribute :cost_type,
+                  Types::CostType.default(Models::CostType.new("Default"))
       end
 
       response_body Models::FullOrder

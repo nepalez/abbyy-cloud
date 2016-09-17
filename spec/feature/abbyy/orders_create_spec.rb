@@ -5,21 +5,13 @@ RSpec.describe "orders.create" do
 
   let(:request) do
     {
-      type:                 "ht_professional",
-      email:                "user@example.com",
-      contact_culture:      "ru",
-      contact_utc_offset:   "+04:00Z",
-      label:                "baz",
-      mt_engine:            "Bing",
-      approval_required:    true,
-      is_manual_estimation: true,
-      cost_type:            "SomeDiscounts",
-      unit_type:            "Words",
-      currency:             "RUB",
-      from:                 "ru",
-      to:                   ["de"],
-      files:                [{ id: "foo", token: "bar" }],
-      category:             "Games > Lego"
+      type:      "ht_professional",
+      unit_type: "Words",
+      currency:  "RUB",
+      from:      "ru",
+      to:        ["de"],
+      files:     [{ id: "foo", token: "bar" }],
+      category:  "Games > Lego"
     }
   end
 
@@ -109,15 +101,6 @@ RSpec.describe "orders.create" do
 
   context "without type:" do
     before { request.delete :type }
-
-    it "raises ArgumentError without sending a request" do
-      expect { subject }.to raise_error(ABBYY::Cloud::ArgumentError)
-      expect(a_request(:any, //)).not_to have_been_made
-    end
-  end
-
-  context "without cost_type:" do
-    before { request.delete :cost_type }
 
     it "raises ArgumentError without sending a request" do
       expect { subject }.to raise_error(ABBYY::Cloud::ArgumentError)
