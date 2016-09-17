@@ -1,6 +1,14 @@
 # Master (to be released)
 
-[Compare v0.0.7...HEAD](https://github.com/nepalez/abbyy-cloud/compare/v0.0.7...HEAD)
+[Compare v0.0.8...HEAD](https://github.com/nepalez/abbyy-cloud/compare/v0.0.8...HEAD)
+
+# [v0.0.8 2016-09-17](https://github.com/nepalez/abbyy-cloud/tree/v0.0.8)
+
+### Bugs Fixed
+
+* Remove unnecessary arguments of submitted order (nepalez)
+
+[Compare v0.0.7...v0.0.8](https://github.com/nepalez/abbyy-cloud/compare/v0.0.7...v0.0.8)
 
 # [v0.0.7 2016-09-09](https://github.com/nepalez/abbyy-cloud/tree/v0.0.7)
 
