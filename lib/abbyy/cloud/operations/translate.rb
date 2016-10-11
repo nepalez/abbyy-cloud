@@ -8,10 +8,10 @@ class ABBYY::Cloud
       http_method "post"
 
       request_body do
-        attribute :engine,          Types::Strict::String
-        attribute :source_language, Types::Locale
-        attribute :target_language, Types::Locale
-        attribute :source_text,     Types::Strict::String
+        attribute :engine,          type: Types::Strict::String
+        attribute :source_language, type: Types::Locale
+        attribute :target_language, type: Types::Locale
+        attribute :source_text,     type: Types::Strict::String
       end
 
       response_body Models::Translation

@@ -3,7 +3,7 @@ RSpec.describe ABBYY::Cloud::Models::Translation do
 
   subject { described_class.new(data) }
 
-  it { is_expected.to be_kind_of ABBYY::Cloud::Struct }
+  it { is_expected.to be_kind_of ABBYY::Cloud::Model }
   its(:to_h) { is_expected.to eq data }
 
   context "with invalid id:" do

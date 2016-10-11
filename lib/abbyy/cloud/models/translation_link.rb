@@ -3,13 +3,13 @@ require_relative "file_link"
 
 class ABBYY::Cloud
   module Models
-    class TranslationLink < Struct
-      attribute :delivered,   Types::Form::Time.optional
-      attribute :started,     Types::Form::Time.optional
-      attribute :progress,    Types::Hash
-      attribute :status,      Types::Status
-      attribute :source_file, Types::FileLink
-      attribute :target_file, Types::FileLink
+    class TranslationLink < Model
+      attribute :delivered,   type: Types::Form::Time, optional: true
+      attribute :started,     type: Types::Form::Time, optional: true
+      attribute :progress,    type: Types::Hash,       default:  proc { {} }
+      attribute :status,      type: Types::Status
+      attribute :source_file, type: Types::FileLink
+      attribute :target_file, type: Types::FileLink
     end
 
     # Registers type Types::TranslationLink

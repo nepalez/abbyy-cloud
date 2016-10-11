@@ -9,22 +9,25 @@ require_relative "text_statistics"
 class ABBYY::Cloud
   module Models
     class FileInfo < FileReference
-      attribute :name,               Types::Strict::String
-      attribute :mime,               Types::Strict::String
-      attribute :created,            Types::Form::Time
-      attribute :is_recognizable,    Types::Form::Bool
-      attribute :is_deleted,         Types::Form::Bool
-      attribute :reading_status,     Types::Strict::String
-      attribute :reading_progress,   Types::Coercible::Int
-      attribute :expected_languages, Types::Array.member(Types::Locale).optional
-      attribute :processed,          Types::Form::Time.optional
-      attribute :deleted,            Types::Form::Time.optional
-      attribute :error,              Types::Strict::String.optional
-      attribute :statistics,         Types::TextStatistics.optional
-      attribute :ocr_settings,       Types::OcrSettings.optional
-      attribute :ocr_statistics,     Types::OcrStatistics.optional
+      attribute :name,             type: Types::Strict::String
+      attribute :mime,             type: Types::Strict::String
+      attribute :created,          type: Types::Form::Time
+      attribute :is_recognizable,  type: Types::Form::Bool
+      attribute :is_deleted,       type: Types::Form::Bool
+      attribute :reading_status,   type: Types::Strict::String
+      attribute :reading_progress, type: Types::Coercible::Int
+      attribute :processed,        type: Types::Form::Time,     optional: true
+      attribute :deleted,          type: Types::Form::Time,     optional: true
+      attribute :error,            type: Types::Strict::String, optional: true
+      attribute :statistics,       type: Types::TextStatistics, optional: true
+      attribute :ocr_settings,     type: Types::OcrSettings,    optional: true
+      attribute :ocr_statistics,   type: Types::OcrStatistics,  optional: true
+      attribute :expected_languages,
+                type: Types::Array.member(Types::Locale),
+                optional: true
       attribute :ocr_warnings,
-                Types::Array.member(Types::OcrWarning).optional
+                type: Types::Array.member(Types::OcrWarning),
+                optional: true
     end
 
     # Registers type Types::FileInfo

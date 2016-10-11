@@ -4,12 +4,12 @@ require_relative "locale"
 class ABBYY::Cloud
   module Models
     class FileLink < FileReference
-      attribute :name,        Types::Strict::String
-      attribute :language,    Types::Locale
-      attribute :is_deleted,  Types::Form::Bool
-      attribute :chars_count, Types::Coercible::Int.optional
-      attribute :words_count, Types::Coercible::Int.optional
-      attribute :pages_count, Types::Coercible::Int.optional
+      attribute :name,        type: Types::Strict::String
+      attribute :language,    type: Types::Locale
+      attribute :is_deleted,  type: Types::Form::Bool
+      attribute :chars_count, type: Types::Coercible::Int, optional: true
+      attribute :words_count, type: Types::Coercible::Int, optional: true
+      attribute :pages_count, type: Types::Coercible::Int, optional: true
     end
 
     # Registers type Types::FileLink

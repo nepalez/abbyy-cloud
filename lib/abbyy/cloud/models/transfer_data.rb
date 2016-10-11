@@ -1,8 +1,8 @@
 class ABBYY::Cloud
   module Models
-    class TransferData < Struct
-      attribute :position, Types::Strict::Int
-      attribute :order,    Types::Strict::Int
+    class TransferData < Model
+      attribute :position, type: Types::Strict::Int
+      attribute :order,    type: Types::Strict::Int
     end
 
     # Registers type Types::TransferData

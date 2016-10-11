@@ -1,7 +1,7 @@
 require_relative "file"
 
 # Base class for specific operations
-# It validates request and response using corresponding structs
+# It validates request and response using corresponding models
 #
 # @abstract
 #
@@ -28,32 +28,32 @@ class ABBYY::Cloud
           value ? (@request_type = value) : (@request_type || :json)
         end
 
-        def request_body(struct = nil, &block)
-          provide_struct :@request_body, struct, &block
+        def request_body(model = nil, &block)
+          provide_model :@request_body, model, &block
         end
 
-        def request_query(struct = nil, &block)
-          provide_struct :@request_query, struct, &block
+        def request_query(model = nil, &block)
+          provide_model :@request_query, model, &block
         end
 
         def response_type(value = nil)
           value ? (@response_type = value) : (@response_type || :json)
         end
 
-        def response_body(struct = nil, &block)
-          provide_struct :@response_body, struct, &block
+        def response_body(model = nil, &block)
+          provide_model :@response_body, model, &block
         end
 
         private
 
-        def provide_struct(variable, struct, &block)
+        def provide_model(variable, model, &block)
           value = instance_variable_get(variable)
-          return value if value && struct.nil? && block.nil?
+          return value if value && model.nil? && block.nil?
 
-          struct ||= Class.new(Struct)
-                          .tap { |obj| obj.instance_eval(&block) if block }
+          model ||= Class.new(Model)
+                         .tap { |obj| obj.instance_eval(&block) if block }
 
-          instance_variable_set(variable, struct)
+          instance_variable_set(variable, model)
         end
       end
 

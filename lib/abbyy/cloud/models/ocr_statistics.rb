@@ -1,10 +1,10 @@
 class ABBYY::Cloud
   module Models
-    class OcrStatistics < Struct
-      attribute :exported_pages,       Types::Coercible::Int
-      attribute :total_characters,     Types::Coercible::Int
-      attribute :uncertain_characters, Types::Coercible::Int
-      attribute :success_part,         Types::Coercible::Float
+    class OcrStatistics < Model
+      attribute :exported_pages,       type: Types::Coercible::Int
+      attribute :total_characters,     type: Types::Coercible::Int
+      attribute :uncertain_characters, type: Types::Coercible::Int
+      attribute :success_part,         type: Types::Coercible::Float
     end
 
     # Registers type Types::OcrStatistics

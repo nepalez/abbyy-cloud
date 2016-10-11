@@ -4,10 +4,10 @@ require_relative "ocr_quality"
 
 class ABBYY::Cloud
   module Models
-    class OcrSettings < Struct
-      attribute :format,  Types::FileFormat
-      attribute :mode,    Types::OcrMode
-      attribute :quality, Types::OcrQuality
+    class OcrSettings < Model
+      attribute :format,  type: Types::FileFormat
+      attribute :mode,    type: Types::OcrMode
+      attribute :quality, type: Types::OcrQuality
     end
 
     # Registers type Types::OcrSettings

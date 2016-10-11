@@ -2,11 +2,11 @@ require_relative "source_tag"
 
 class ABBYY::Cloud
   module Models
-    class TextStatistics < Struct
-      attribute :language,    Types::Locale
-      attribute :pages_count, Types::Coercible::Int
-      attribute :words_count, Types::Coercible::Int
-      attribute :chars_count, Types::Coercible::Int
+    class TextStatistics < Model
+      attribute :language,    type: Types::Locale
+      attribute :pages_count, type: Types::Coercible::Int
+      attribute :words_count, type: Types::Coercible::Int
+      attribute :chars_count, type: Types::Coercible::Int
     end
 
     # Registers type Types::TextStatistics

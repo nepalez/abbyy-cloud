@@ -2,11 +2,12 @@ require_relative "transfer_data"
 
 class ABBYY::Cloud
   module Models
-    class TranslationSegment < Struct
-      attribute :id,   Types::Strict::String
-      attribute :text, Types::Strict::String
+    class TranslationSegment < Model
+      attribute :id,   type: Types::Strict::String
+      attribute :text, type: Types::Strict::String
       attribute :tags_transfer_data,
-                Types::Array.member(Types::TransferData).default([])
+                type: Types::Array.member(Types::TransferData),
+                default: proc { [] }
     end
 
     # Registers type Types::TranslationSegment

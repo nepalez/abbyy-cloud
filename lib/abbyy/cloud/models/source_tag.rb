@@ -2,10 +2,11 @@ class ABBYY::Cloud
   module Models
     TYPES = %w(Start End Placeholder).freeze
 
-    class SourceTag < Struct
-      attribute :number, Types::Strict::Int
-      attribute :position, Types::Strict::Int
-      attribute :type, Types::Strict::String.constrained(included_in: TYPES)
+    class SourceTag < Model
+      attribute :number,   type: Types::Strict::Int
+      attribute :position, type: Types::Strict::Int
+      attribute :type,
+                type: Types::Strict::String.constrained(included_in: TYPES)
     end
 
     # Registers type Types::SourceTag

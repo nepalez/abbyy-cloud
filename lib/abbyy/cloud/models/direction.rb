@@ -2,9 +2,9 @@ require_relative "locale"
 
 class ABBYY::Cloud
   module Models
-    class Direction < Struct
-      attribute :source, Types::Locale
-      attribute :target, Types::Locale
+    class Direction < Model
+      attribute :source, type: Types::Locale
+      attribute :target, type: Types::Locale
     end
 
     # Registers type Types::Direction

@@ -10,10 +10,10 @@ class ABBYY::Cloud
       http_method "post"
 
       request_body do
-        attribute :engine,  Types::Strict::String
-        attribute :from,    Types::Locale
-        attribute :to,      Types::Locale
-        attribute :sources, Types::Array.member(Types::SourceSegment)
+        attribute :engine,  type: Types::Strict::String
+        attribute :from,    type: Types::Locale
+        attribute :to,      type: Types::Locale
+        attribute :sources, type: Types::Array.member(Types::SourceSegment)
       end
 
       response_body Types::Array.member(Types::TranslationSegment)

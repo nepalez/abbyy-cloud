@@ -10,22 +10,26 @@ class ABBYY::Cloud
       http_method "post"
 
       request_body do
-        attribute :type, Types::TranslationType
-        attribute :email, Types::Strict::String.optional
-        attribute :contact_culture, Types::Strict::String.optional
-        attribute :contact_utc_offset, Types::Coercible::String.optional
-        attribute :mt_engine, Types::Strict::String.optional
-        attribute :approval_required, Types::Form::Bool
-        attribute :is_manual_estimation, Types::Form::Bool
-        attribute :unit_type, Types::UnitType
-        attribute :currency, Types::Currency
-        attribute :from, Types::Locale
-        attribute :label, Types::Label.optional
-        attribute :to, Types::FilledArray.member(Types::Locale)
-        attribute :files, Types::FilledArray.member(Types::FileReference)
-        attribute :category, Types::Strict::String.optional
-        attribute :cost_type,
-                  Types::CostType.default(Models::CostType.new("Default"))
+        attribute :type, type: Types::TranslationType
+        attribute :email, type: Types::Strict::String, optional: true
+        attribute :contact_culture, type: Types::Strict::String, optional: true
+        attribute :contact_utc_offset, type: Types::Coercible::String,
+                                       optional: true
+        attribute :mt_engine, type: Types::Strict::String,
+                              default: proc { false }
+        attribute :approval_required, type: Types::Form::Bool,
+                                      default: proc { false }
+        attribute :is_manual_estimation, type: Types::Form::Bool,
+                                         optional: proc { false }
+        attribute :unit_type, type: Types::UnitType
+        attribute :currency, type: Types::Currency
+        attribute :from, type: Types::Locale
+        attribute :label, type: Types::Label, optional: true
+        attribute :to, type: Types::FilledArray.member(Types::Locale)
+        attribute :files, type: Types::FilledArray.member(Types::FileReference)
+        attribute :category, type: Types::Strict::String, optional: true
+        attribute :cost_type, type:    Types::CostType,
+                              default: proc { Models::CostType.new("Default") }
       end
 
       response_body Models::FullOrder

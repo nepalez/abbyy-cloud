@@ -3,10 +3,11 @@ require_relative "direction"
 
 class ABBYY::Cloud
   module Models
-    class Engine < Struct
-      attribute :name,                   Types::Strict::String
-      attribute :languages,              Types::Array.member(Types::Locale)
-      attribute :translation_directions, Types::Array.member(Types::Direction)
+    class Engine < Model
+      attribute :name,      type: Types::Strict::String
+      attribute :languages, type: Types::Array.member(Types::Locale)
+      attribute :translation_directions,
+                type: Types::Array.member(Types::Direction)
     end
 
     # Registers type Types::Engine

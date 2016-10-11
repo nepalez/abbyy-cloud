@@ -10,11 +10,11 @@ class ABBYY::Cloud
       http_method "get"
 
       request_query do
-        attribute :skip, Types::Strict::Int
-        attribute :take, Types::Strict::Int
-        attribute :type, Types::Strict::String.optional
-        attribute :from, Types::Locale.optional
-        attribute :to,   Types::Locale.optional
+        attribute :skip, type: Types::Strict::Int
+        attribute :take, type: Types::Strict::Int
+        attribute :type, type: Types::Strict::String, optional: true
+        attribute :from, type: Types::Locale,         optional: true
+        attribute :to,   type: Types::Locale,         optional: true
       end
 
       response_body Types::Array.member(Types::Price)

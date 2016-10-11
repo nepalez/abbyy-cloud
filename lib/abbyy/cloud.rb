@@ -1,5 +1,5 @@
 require "dry-initializer"
-require "dry-struct"
+require "dry-types"
 require "hashie/mash"
 require "json"
 require "net/http"
@@ -9,7 +9,7 @@ require "mime-types"
 
 module ABBYY
   class Cloud
-    require_relative "cloud/struct"
+    require_relative "cloud/model"
     require_relative "cloud/types"
     require_relative "cloud/connection"
     require_relative "cloud/settings"

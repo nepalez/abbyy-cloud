@@ -1,8 +1,8 @@
 class ABBYY::Cloud
   module Models
-    class Translation < Struct
-      attribute :id,          Types::Strict::String
-      attribute :translation, Types::Strict::String
+    class Translation < Model
+      attribute :id,          type: Types::Strict::String
+      attribute :translation, type: Types::Strict::String
     end
   end
 end

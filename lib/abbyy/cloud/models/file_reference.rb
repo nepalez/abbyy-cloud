@@ -1,8 +1,8 @@
 class ABBYY::Cloud
   module Models
-    class FileReference < Struct
-      attribute :id,    Types::Strict::String
-      attribute :token, Types::Strict::String
+    class FileReference < Model
+      attribute :id,    type: Types::Strict::String
+      attribute :token, type: Types::Strict::String
     end
 
     # Registers type Types::FileReference

@@ -14,7 +14,7 @@ RSpec.describe ABBYY::Cloud::Models::FileLink do
 
   subject { described_class.new(data) }
 
-  it { is_expected.to be_kind_of ABBYY::Cloud::Struct }
+  it { is_expected.to be_kind_of ABBYY::Cloud::Model }
   its(:to_h) { is_expected.to eq data }
 
   context "without id:" do
