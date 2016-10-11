@@ -1,6 +1,16 @@
 # Master (to be released)
 
-[Compare v0.0.8...HEAD](https://github.com/nepalez/abbyy-cloud/compare/v0.0.8...HEAD)
+[Compare v0.0.9...HEAD](https://github.com/nepalez/abbyy-cloud/compare/v0.0.9...HEAD)
+
+# [v0.0.9 2016-10-11](https://github.com/nepalez/abbyy-cloud/tree/v0.0.9)
+
+### Internal
+
+* Update dependency from the `dry-initializer` gem (nepalez)
+* Switch from Dry::Struct to native ABBYY::Cloud::Model (nepalez)
+* Drop dependency from `dry-struct` gem (nepalez)
+
+[Compare v0.0.8...v0.0.9](https://github.com/nepalez/abbyy-cloud/compare/v0.0.8...v0.0.9)
 
 # [v0.0.8 2016-09-17](https://github.com/nepalez/abbyy-cloud/tree/v0.0.8)
 
