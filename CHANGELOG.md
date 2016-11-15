@@ -1,6 +1,10 @@
-# Master (to be released)
+# [v0.0.10 2016-10-11](https://github.com/nepalez/abbyy-cloud/tree/v0.0.10)
 
-[Compare v0.0.9...HEAD](https://github.com/nepalez/abbyy-cloud/compare/v0.0.9...HEAD)
+### Internal
+
+* Switched to `dry-initializer` gem v0.9.2+ (nepalez)
+
+[Compare v0.0.9...v0.0.10](https://github.com/nepalez/abbyy-cloud/compare/v0.0.9...v0.0.10)
 
 # [v0.0.9 2016-10-11](https://github.com/nepalez/abbyy-cloud/tree/v0.0.9)
 
