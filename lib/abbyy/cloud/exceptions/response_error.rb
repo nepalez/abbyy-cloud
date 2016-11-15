@@ -7,16 +7,19 @@ class ABBYY::Cloud
     def initialize(response)
       @status = response.code.to_i
       @data   = Models::Error[parse_response(response)] unless @status == 500
+      super
+    end
 
-      super <<-MESSAGE.gsub(/ +\|/, "")
+    private
+
+    def message
+      <<-MESSAGE.gsub(/ +\|/, "")
         |ABBYY Cloud API responded to the request #{data&.request_id} with a status #{status}
         |  error:       #{data&.error}
         |  description: #{data&.error_description}
         |  model_state: #{data&.model_state}
       MESSAGE
     end
-
-    private
 
     def parse_response(response)
       JSON.parse(response.body)
